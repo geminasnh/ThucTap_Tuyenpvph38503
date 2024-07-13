@@ -2,7 +2,7 @@
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
 </button>
 <div>
-    <a href="index.html" class="sidebar-logo">
+    <a href="#" class="sidebar-logo">
         <img src="{{ asset('img/lg4.png') }}" alt="site logo" class="light-logo">
     </a>
 </div>
@@ -15,41 +15,59 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="index-3.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                        eCommerce</a>
+                    <a href="#"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                        Thống kê</a>
                 </li>
             </ul>
-        </li>
-        <li class="sidebar-menu-group-title">Application</li>
+        </li>{{--Thong ke--}}
 
+        <li class="sidebar-menu-group-title">Application</li>
 
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-                <span>Invoice</span>
+                <span>Hóa đơn</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> List</a>
-                </li>
-                <li>
-                    <a href="invoice-preview.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                        Preview</a>
-                </li>
-                <li>
-                    <a href="invoice-add.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add new</a>
-                </li>
-                <li>
-                    <a href="invoice-edit.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> Edit</a>
+                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
                 </li>
             </ul>
-        </li>
-
-
+        </li>{{--Hoa don--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
-                <iconify-icon icon="heroicons:document" class="menu-icon"></iconify-icon>
-                <span>Forms</span>
+                <iconify-icon icon="fluent-mdl2:product-release" class="menu-icon"></iconify-icon>
+
+                <span>Sản phẩm</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
+                </li>
+                <li>
+                    <a href="form-layout.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="mingcute:storage-line" class="menu-icon"></iconify-icon>
+                <span>Danh mục</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
+                </li>
+                <li>
+                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                </li>
+            </ul>
+        </li>{{--Danh muc--}}
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="flowbite:user-edit-outline" class="menu-icon"></iconify-icon>
+                <span>Chức vụ</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
@@ -65,49 +83,21 @@
                         Form Validation</a>
                 </li>
             </ul>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)">
-                <iconify-icon icon="mingcute:storage-line" class="menu-icon"></iconify-icon>
-                <span>Table</span>
-            </a>
-            <ul class="sidebar-submenu">
-                <li>
-                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Basic
-                        Table</a>
-                </li>
-                <li>
-                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Data
-                        Table</a>
-                </li>
-            </ul>
-        </li>
-
+        </li>{{--Chuc vu--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
-                <span>Users</span>
+                <span>Tài khoản</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Users
-                        List</a>
+                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
                 </li>
                 <li>
-                    <a href="users-grid.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Users
-                        Grid</a>
-                </li>
-                <li>
-                    <a href="add-user.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Add
-                        User</a>
-                </li>
-                <li>
-                    <a href="view-profile.html"><i class="ri-circle-fill circle-icon text-danger-main w-auto"></i> View
-                        Profile</a>
+                    <a href="add-user.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Thêm</a>
                 </li>
             </ul>
-        </li>
-
+        </li>{{--Tai khoan--}}
 
     </ul>
 </div>
