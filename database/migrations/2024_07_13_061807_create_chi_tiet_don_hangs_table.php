@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('chi_tiet_don_hangs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('don_hang_id');
+            $table->unsignedBigInteger('san_pham_id');
+            $table->integer('so_luong');
+            $table->double('gia', 10, 2);
+            $table->double('thanh_tien', 10, 2);
             $table->timestamps();
+
+            $table->foreign('don_hang_id')->references('id')->on('don_hangs');
+            $table->foreign('san_pham_id')->references('id')->on('san_phams');
         });
     }
 

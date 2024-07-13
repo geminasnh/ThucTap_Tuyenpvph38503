@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('phuong_thuc_thanh_toans', function (Blueprint $table) {
             $table->id();
+            $table->string('ten_phuong_thuc');
             $table->timestamps();
         });
     }

@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('san_phams', function (Blueprint $table) {
             $table->id();
+            $table->string('hinh_anh')->nullable();
+            $table->string('ten_san_pham');
+            $table->unsignedInteger('so_luong');
+            $table->double('gia', 10, 2);
+            $table->double('gia_khuyen_mai', 10, 2)->nullable();
+            $table->date('ngay_nhap');
+            $table->text('mo_ta')->nullable();
+            $table->unsignedBigInteger('danh_muc_id');
             $table->timestamps();
+
+            $table->foreign('danh_muc_id')->references('id')->on('danh_mucs')->onDelete('cascade');
         });
     }
 

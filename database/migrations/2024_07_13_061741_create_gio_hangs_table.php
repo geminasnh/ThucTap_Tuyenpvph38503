@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('gio_hangs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nguoi_dung_id');
             $table->timestamps();
+
+            $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
         });
     }
 
