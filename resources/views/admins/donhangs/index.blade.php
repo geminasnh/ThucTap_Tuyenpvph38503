@@ -54,40 +54,34 @@
             <table class="table bordered-table mb-0">
                 <thead>
                 <tr>
-                    <th scope="col">Sản phẩm</th>
-                    <th scope="col">SL</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Giá Sale</th>
-                    <th scope="col">Ngày nhập</th>
-                    <th scope="col">Mô tả</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Mã đơn hàng</th>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col">Tổng tiền</th>
+                    <th scope="col">Phương thức thanh toán</th>
+                    <th scope="col">Trạng thái đơn hàng</th>
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($listProduct as $index => $pt)
+                @foreach($listDonHang as $index => $pt)
                     <tr>
+                        <td>{{$pt->id}}</td>
+                        <td>{{$pt->ma_don_hang}}</td>
+                        <td>{{$pt->nguoi_dung_id}}</td>
+                        <td>{{$pt->ngay_dat}}</td>
+                        <td>{{$pt->tong_tien}}</td>
+                        <td>{{$pt->phuong_thuc_thanh_toan_id}}</td>
+                        <td>{{$pt->trang_thai_id}}</td>
                         <td>
-                            <div class="d-flex align-items-center">
-                                <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
-                                <div class="flex-grow-1">
-                                    <h6 class="text-md mb-0 fw-normal">{{$pt->ten_san_pham}}</h6>
-                                    <span class="text-sm text-secondary-light fw-normal">{{$pt->danh_muc_id}}</span>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{$pt->so_luong}}</td>
-                        <td>{{$pt->gia}}</td>
-                        <td>{{$pt->gia_khuyen_mai}}</td>
-                        <td>{{$pt->ngay_nhap}}</td>
-                        <td>{{$pt->mo_ta}}</td>
-                        <td>
+
+                            <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
+                            </a>
                             <a href="#"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
-                            </a>
-                            <a href="#"
-                               class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                             </a>
                         </td>
                     </tr>

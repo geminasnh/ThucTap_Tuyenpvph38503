@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\SanPham;
+use App\Models\DonHang;
 use Illuminate\Http\Request;
 
-class SanPhamController extends Controller
+class DonHangController extends Controller
 {
-    public $san_pham;
+    public $don_hang;
     public function __construct()
     {
-        $this->san_pham = new SanPham();
+        $this->don_hang = new DonHang();
     }
     public function index()
     {
-        $title = "Danh sách sản phẩm";
-        $listProduct = $this->san_pham->getListProduct();
-        return view('admins.sanphams.index', compact('listProduct','title'));
+        $title = "Danh sách đơn hàng";
+        $listDonHang = $this->don_hang->getListDonHang();
+        return view('admins.donhangs.index', compact('listDonHang','title'));
     }
 
     /**
@@ -25,8 +25,7 @@ class SanPhamController extends Controller
      */
     public function create()
     {
-        $title = "Thêm sản phẩm";
-        return view('admins.sanphams.them', compact('title'));
+        //
     }
 
     /**
@@ -34,11 +33,7 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->isMethod('POST')){
-            $data = $request->except('_token');
-            $this->san_pham->addProduct($data);
-            return redirect()->route('sanpham.index')->with('thongbao', "Thêm sản phẩm thành công");
-        }
+        //
     }
 
     /**

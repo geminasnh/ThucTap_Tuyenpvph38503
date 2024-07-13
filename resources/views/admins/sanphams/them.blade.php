@@ -34,6 +34,15 @@
                                     </label>
                                 </div><!--End Upload IMG -->
 
+                                {{--<div class="card-body p-24">
+                                    <label for="file-upload-name" class="mb-16 border border-neutral-600 fw-medium text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
+                                        <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
+                                        Click to upload
+                                        <input type="file" class="form-control w-auto mt-24 form-control-lg" id="file-upload-name" multiple hidden>
+                                    </label>
+                                    <ul id="uploaded-img-names" class=""></ul>
+                                </div>--}} {{--Upload file--}}
+
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tên sản phẩm <span class="text-danger-600">*</span></label>
                                     <input type="text" class="form-control radius-8" name="ten_san_pham" placeholder="Nhập tên sản phẩm">
@@ -81,7 +90,7 @@
     </div>
 
     <script>
-
+        /*upload img*/
         const fileInputMultiple = document.getElementById("upload-file-multiple");
         const uploadedImgsContainer = document.querySelector(".uploaded-imgs-container");
 
@@ -97,7 +106,7 @@
                 const removeButton = document.createElement('button');
                 removeButton.type = 'button';
                 removeButton.classList.add('uploaded-img__remove', 'position-absolute', 'top-0', 'end-0', 'z-1', 'text-2xxl', 'line-height-1', 'me-8', 'mt-8', 'd-flex');
-                removeButton.innerHTML = '';
+                removeButton.innerHTML = '<iconify-icon icon="radix-icons:cross-2" class="text-xl text-danger-600"></iconify-icon>';
 
                 const imagePreview = document.createElement('img');
                 imagePreview.classList.add('w-100', 'h-100', 'object-fit-cover');
@@ -114,7 +123,44 @@
             });
 
             fileInputMultiple.value = '';
-        });
+        });//end upload img
+
+
+        /*Upload file*/
+        /*document.getElementById('file-upload-name').addEventListener('change', function(event) {
+            var fileInput = event.target;
+            var fileList = fileInput.files;
+            var ul = document.getElementById('uploaded-img-names');
+
+            ul.classList.add('show-uploaded-img-name');
+
+            for (var i = 0; i < fileList.length; i++) {
+                var li = document.createElement('li');
+                li.classList.add('uploaded-image-name-list', 'text-primary-600', 'fw-semibold', 'd-flex', 'align-items-center', 'gap-2');
+
+                var iconifyIcon = document.createElement('iconify-icon');
+                iconifyIcon.setAttribute('icon', 'ph:link-break-light');
+                iconifyIcon.classList.add('text-xl', 'text-secondary-light');
+
+                var crossIconifyIcon = document.createElement('iconify-icon');
+                crossIconifyIcon.setAttribute('icon', 'radix-icons:cross-2');
+                crossIconifyIcon.classList.add('remove-image','text-xl', 'text-secondary-light', 'text-hover-danger-600');
+
+                crossIconifyIcon.addEventListener('click', (function(liToRemove) {
+                    return function() {
+                        ul.removeChild(liToRemove);
+                    };
+                })(li));
+
+                li.appendChild(iconifyIcon);
+
+                li.appendChild(document.createTextNode(' ' + fileList[i].name));
+
+                li.appendChild(crossIconifyIcon);
+
+                ul.appendChild(li);
+            }
+        });*/
 
 
     </script>

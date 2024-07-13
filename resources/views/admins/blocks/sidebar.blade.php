@@ -26,15 +26,15 @@
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
-                <span>Hóa đơn</span>
+                <span>Đơn hàng</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh
+                    <a href="{{route('donhang.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh
                         sách</a>
                 </li>
             </ul>
-        </li>{{--Hoa don--}}
+        </li>{{--Don hang--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="fluent-mdl2:product-release" class="menu-icon"></iconify-icon>
@@ -95,6 +95,18 @@
                 </li>
             </ul>
         </li>{{--Tai khoan--}}
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="codicon:feedback" class="menu-icon"></iconify-icon>
+                <span>Bình luận</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+            </ul>
+        </li>{{--Binh luan--}}
 
     </ul>
 </div>
