@@ -21,7 +21,7 @@
             </ul>
         </li>{{--Thong ke--}}
 
-        <li class="sidebar-menu-group-title">Application</li>
+        <li class="sidebar-menu-group-title">Chức năng</li>
 
         <li class="dropdown">
             <a href="javascript:void(0)">
@@ -49,7 +49,7 @@
                 </li>
 
             </ul>
-        </li>
+        </li>{{--San pham--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="mingcute:storage-line" class="menu-icon"></iconify-icon>
@@ -71,16 +71,10 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Input
-                        Forms</a>
+                    <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
                 </li>
                 <li>
-                    <a href="form-layout.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Input
-                        Layout</a>
-                </li>
-                <li>
-                    <a href="form-validation.html"><i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
-                        Form Validation</a>
+                    <a href="form-layout.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
             </ul>
         </li>{{--Chuc vu--}}
@@ -94,7 +88,7 @@
                     <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
                 </li>
                 <li>
-                    <a href="add-user.html"><i class="ri-circle-fill circle-icon text-info-main w-auto"></i> Thêm</a>
+                    <a href="add-user.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
             </ul>
         </li>{{--Tai khoan--}}
