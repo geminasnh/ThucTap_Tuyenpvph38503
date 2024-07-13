@@ -23,7 +23,8 @@ class SanPhamSeeder extends Seeder
                 'gia'=>$faker->numberBetween(50,100),
                 'gia_khuyen_mai'=>$faker->numberBetween(10,50),
                 'ngay_nhap'=>$faker->date,
-                'danh_muc_id'=>$faker->randomDigit(),
+                'mo_ta'=>$faker->text(100),
+                'danh_muc_id'=>$faker->numberBetween(2,5),
             ]);
         }
     }

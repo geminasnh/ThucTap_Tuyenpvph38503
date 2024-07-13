@@ -18,4 +18,5 @@ Route::get('/', function () {
 });
 Route::get('/admin', function () {
     return view('layouts.admin');
-});
+})->name('admin');
+Route::resource('sanpham',\App\Http\Controllers\Admins\SanPhamController::class);

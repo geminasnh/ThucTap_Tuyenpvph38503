@@ -2,7 +2,7 @@
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
 </button>
 <div>
-    <a href="#" class="sidebar-logo">
+    <a href="{{route('admin')}}" class="sidebar-logo">
         <img src="{{ asset('img/lg4.png') }}" alt="site logo" class="light-logo">
     </a>
 </div>
@@ -30,22 +30,22 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
+                    <a href="invoice-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh
+                        sách</a>
                 </li>
             </ul>
         </li>{{--Hoa don--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="fluent-mdl2:product-release" class="menu-icon"></iconify-icon>
-
                 <span>Sản phẩm</span>
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
+                    <a href="{{route('sanpham.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
                 </li>
                 <li>
-                    <a href="form-layout.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                    <a href="{{route('sanpham.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Thêm</a>
                 </li>
 
             </ul>
@@ -57,10 +57,12 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
+                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
                 </li>
                 <li>
-                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                        Thêm</a>
                 </li>
             </ul>
         </li>{{--Danh muc--}}
@@ -85,7 +87,8 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
+                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
                 </li>
                 <li>
                     <a href="add-user.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>

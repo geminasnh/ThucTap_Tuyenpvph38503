@@ -12,66 +12,54 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">Sản phẩm</li>
+            <li class="fw-medium">{{$title}}</li>
         </ul>
-    </div>
+    </div>{{--end title--}}
 
-    <a href="{{route('sanpham.create')}}" class="btn btn-success my-2">Thêm sản phẩm</a>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-    @endif
-    <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên khách hàng</th>
-            <th>Email</th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
-            <th>Tương tác</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($listSanPham as $index => $sp)
+    <div class="table-responsive">
+        <table class="table striped-table mb-0">
+            <thead>
             <tr>
-                <td>{{$index + 1}}</td>
-                <td>{{$sp->ma_sp}}</td>
-                <td>{{$sp->ten_sp}}</td>
-                <td>{{$sp->gia}}</td>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">SL</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Giá Sale</th>
+                <th scope="col">Ngày nhập</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($listProduct as $index => $sp)
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
+                        <div class="flex-grow-1">
+                            <h6 class="text-md mb-0 fw-normal">{{$sp->ten_san_pham}}</h6>
+                            <span class="text-sm text-secondary-light fw-normal">{{$sp->danh_muc_id}}</span>
+                        </div>
+                    </div>
+                </td>
                 <td>{{$sp->so_luong}}</td>
+                <td>{{$sp->gia}}</td>
+                <td>{{$sp->gia_khuyen_mai}}</td>
                 <td>{{$sp->ngay_nhap}}</td>
-                <td>{{$sp->mo_ta}}</td>
-                <td>{{$sp->trang_thai == 1 ? 'hieern thij' : 'Arrn' }}</td>
-                <td style="width: 1px" class="text-nowrap">
-                    <a href="" class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i> Chi tiết</a>
-                    <a href="" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i>Sửa</a>
+                <td style="width: 527px">{{$sp->mo_ta}}</td>
+                <td>
+                    <a href="#"
+                       class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                        <iconify-icon icon="lucide:edit"></iconify-icon>
+                    </a>
+                    <a href="#"
+                       class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                    </a>
                 </td>
             </tr>
-        @endforeach
-
-        </tbody>
-    </table>
-    <div class="d-flex justify-content-center">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+            @endforeach
+            </tbody>
+        </table>
     </div>
-
 
 @endsection
