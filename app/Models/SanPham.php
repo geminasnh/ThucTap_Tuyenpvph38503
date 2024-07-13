@@ -18,5 +18,8 @@ class SanPham extends Model
         return $listProduct;
     }
 
-
+    public function addProduct($data)
+    {
+        DB::table('san_phams')->insert($data);
+    }
 }

@@ -35,7 +35,11 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
-
+        if ($request->isMethod('POST')){
+            $data = $request->except('_token');
+            $this->san_pham->addProduct($data);
+            return redirect()->route('sanpham.index')->with('thongbao', "Thêm sản phẩm thành công");
+        }
     }
 
     /**

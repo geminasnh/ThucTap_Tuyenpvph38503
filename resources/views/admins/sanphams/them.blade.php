@@ -62,15 +62,15 @@
                                     <label for="desig" class="form-label fw-semibold text-primary-light text-sm mb-8">Danh mục sản phẩm <span class="text-danger-600">*</span> </label>
                                     <select class="form-control radius-8 form-select" name="danh_muc_id" id="desig">
                                         <option selected>Vui lòng chọn</option>
-                                        <option value="0">Danh mục 0</option>
-                                        <option value="1">Danh mục 1</option>
+                                        <option value="2">Danh mục 2</option>
+                                        <option value="3">Danh mục 1</option>
                                     </select>
                                 </div>
 
                                 <div class="text-center mt-3">
-                                    <a href="{{route('sanpham.index')}}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
-                                    <button class="btn btn-success mx-20"><i class="fa-solid fa-plus"></i> Thêm</button>
-                                    <button type="reset" class="btn btn-outline-secondary me-3">Nhập lại</button>
+                                    <a href="{{route('sanpham.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+                                    <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
+                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
                                 </div>
                             </form>
                         </div>
