@@ -76,7 +76,7 @@
                         <td>{{$pt->trang_thai_id}}</td>
                         <td>
 
-                            <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+                            <a href="{{route('donhang.create')}}" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
                             </a>
                             <a href="#"

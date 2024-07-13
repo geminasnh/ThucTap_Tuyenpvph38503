@@ -25,7 +25,9 @@ class DonHangController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Chi tiết đơn hàng";
+
+        return view('admins.donhangs.chitiet', compact('title'));
     }
 
     /**
