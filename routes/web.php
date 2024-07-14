@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admins\BinhLuanController;
+use App\Http\Controllers\Admins\DonHangController;
+use App\Http\Controllers\Admins\SanPhamController;
+use App\Http\Controllers\Admins\TaiKhoanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +26,5 @@ Route::get('/admin', function () {
 Route::resource('sanpham',\App\Http\Controllers\Admins\SanPhamController::class);
 Route::resource('donhang',\App\Http\Controllers\Admins\DonHangController::class);
 Route::resource('binhluan',\App\Http\Controllers\Admins\BinhLuanController::class);
+Route::resource('taikhoan',\App\Http\Controllers\Admins\TaiKhoanController::class);
 
