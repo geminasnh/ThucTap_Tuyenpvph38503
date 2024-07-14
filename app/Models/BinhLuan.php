@@ -13,5 +13,6 @@ class BinhLuan extends Model
     {
         $listBinhLuan = DB::table('binh_luans')->get();
         return $listBinhLuan;
+        //dd();
     }
 }

@@ -37,22 +37,29 @@
                         <th scope="col">Nội dung</th>
                         <th scope="col">Thời gian bình luận</th>
                         <th scope="col" class="text-center">Trạng thái bình luận</th>
+                        <th scope="col">Thao tác</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                {{--<img src="assets/images/users/user1.png" alt="" class="flex-shrink-0 me-12 radius-8">--}}
-                                <span class="text-lg text-secondary-light fw-semibold flex-grow-1">Dianne Russell</span>
-                            </div>
-                        </td>
-                        <td>#6352148</td>
-                        <td>iPhone 14 max</td>
-                        <td>2</td>
-                        <td>$5,000.00</td>
-                        <td class="text-center"> <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">Spam</span> </td>
-                    </tr>
+                    @foreach($dsBinhLuan as $index => $pt)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    {{--<img src="assets/images/users/user1.png" alt="" class="flex-shrink-0 me-12 radius-8">--}}
+                                    <span class="text-lg text-secondary-light fw-semibold flex-grow-1">{{$pt->tai_khoan_id}}</span>
+                                </div>
+                            </td>
+                            <td>{{$pt->san_pham_id}}</td>
+                            <td>{{$pt->san_pham_id}}</td>
+                            <td>{{$pt->noi_dung}}</td>
+                            <td>{{$pt->thoi_gian}}</td>
+                            <td class="text-center"> <span class="bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm">{{$pt->trang_thai_binh_luan_id}}</span> </td>
+                            <td><a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                </a></td>
+                        </tr>
+                    @endforeach
+
 
                     </tbody>
                 </table>

@@ -16,6 +16,7 @@ class BinhLuanController extends Controller
     public function index()
     {
         $title = "Danh sách bình luận";
+        //dd();
         $dsBinhLuan = $this->binh_luan->getListBinhLuan();
         return view('admins.binhluans.index', compact('title','dsBinhLuan'));
     }
