@@ -21,13 +21,18 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                            <form action="{{route('taikhoan.store')}}" method="POST">
+                             <form action="{{route('taikhoan.store')}}" method="POST">
                                 @csrf
                                 <h6 class="text-md text-primary-light mb-16">Ảnh sản phẩm</h6>
 
                                 <div class="upload-image-wrapper d-flex align-items-center gap-3 flex-wrap mb-24 mt-16">
                                     <div class="uploaded-imgs-container d-flex gap-3 flex-wrap"></div>
-                                    <label class="upload-file-multiple h-120-px w-120-px border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50 bg-hover-neutral-200 d-flex align-items-center flex-column justify-content-center gap-1" for="upload-file-multiple">
+                                 
+                                        <label class="upload-file-multiple h-120-px w-120-px border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50 bg-hover-neutral-200 d-flex align-items-center flex-column justify-content-center gap-1" for="upload-file-multiple">
+                                        <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
+                                        <span class="fw-semibold text-secondary-light">Tải lên</span>
+                                        <input id="upload-file-multiple" type="file" name="hinh_anh"  hidden multiple/>
+                                    </label>
                                         <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
                                         <span class="fw-semibold text-secondary-light">Tải lên</span>
                                         <input id="upload-file-multiple" type="file" name="hinh_anh"  hidden multiple/>
@@ -84,7 +89,7 @@
                                 </div>
 
                                 <div class="text-center mt-3">
-                                    <a href="{{route('sanpham.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+                                    <a href="{{route('taikhoan.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
                                     <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
                                 </div>

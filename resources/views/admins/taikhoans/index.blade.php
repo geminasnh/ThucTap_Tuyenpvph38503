@@ -55,6 +55,7 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Hình ảnh</th>
                 
                     <th scope="col">Tài khoản</th>
                     <th scope="col">Họ Tên</th>
@@ -80,6 +81,7 @@
                                 </div>
                             </div>
                         </td>
+                        <td><img src="{{$pt->hinh_anh}}" alt=""></td>
                         <td>{{$pt->tai_khoan}}</td>
                         <td>{{$pt->ho_ten}}</td>
                         <td>{{$pt->email}}</td>
