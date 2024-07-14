@@ -20,4 +20,6 @@ Route::get('/admin', function () {
     return view('layouts.admin');
 })->name('admin');
 Route::resource('sanpham',\App\Http\Controllers\Admins\SanPhamController::class);
-Route::resource('donhang', \App\Http\Controllers\Admins\DonHangController::class);
+Route::resource('donhang',\App\Http\Controllers\Admins\DonHangController::class);
+Route::resource('binhluan',\App\Http\Controllers\Admins\BinhLuanController::class);
+

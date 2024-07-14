@@ -3,35 +3,29 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\DonHang;
+use App\Models\BinhLuan;
 use Illuminate\Http\Request;
 
-class DonHangController extends Controller
+class BinhLuanController extends Controller
 {
-    public $don_hang;
+    public $binh_luan;
     public function __construct()
     {
-        $this->don_hang = new DonHang();
+        $this->binh_luan = new BinhLuan();
     }
     public function index()
     {
-        $title = "Danh sách đơn hàng";
-        $listDonHang = $this->don_hang->getListDonHang();
-        return view('admins.donhangs.index', compact('listDonHang','title'));
+        $title = "Danh sách bình luận";
+        $dsBinhLuan = $this->binh_luan->getListBinhLuan();
+        return view('admins.binhluans.index', compact('title','dsBinhLuan'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function chitiet($idDonHang)
-    {
-        $title = "Chi tiết đơn hàng";
-
-        return view('admins.donhangs.chitiet', compact('title'));
-    }
     public function create()
     {
-
+        //
     }
 
     /**

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tai_khoans', function (Blueprint $table) {
             $table->id();
             $table->string('anh_dai_dien')->nullable();
+            $table->string('tai_khoan');
             $table->string('ho_ten');
             $table->string('email')->unique();
             $table->string('so_dien_thoai');
@@ -22,9 +23,10 @@ return new class extends Migration
             $table->date('ngay_sinh');
             $table->string('mat_khau');
             $table->unsignedBigInteger('chuc_vu_id');
-            $table->boolean('trang_thai')->default(1);
+            $table->unsignedBigInteger('trang_thai_tai_khoan_id');
             $table->timestamps();
 
+            $table->foreign('trang_thai_tai_khoan_id')->references('id')->on('trang_thai_tai_khoans')->onDelete('cascade');
             $table->foreign('chuc_vu_id')->references('id')->on('chuc_vus')->onDelete('cascade');
         });
     }

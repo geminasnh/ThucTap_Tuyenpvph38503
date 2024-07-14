@@ -102,7 +102,7 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="users-list.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                    <a href="{{route('binhluan.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
             </ul>

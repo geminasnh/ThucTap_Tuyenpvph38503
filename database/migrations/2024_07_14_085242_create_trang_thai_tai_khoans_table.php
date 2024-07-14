@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::table('tai_khoans', function (Blueprint $table) {
-            $table->string('ten_tai_khoan');
+        Schema::create('trang_thai_tai_khoans', function (Blueprint $table) {
+            $table->id();
+            $table->string('ten_trang_thai');
+            $table->timestamps();
         });
     }
 
@@ -18,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('trang_thai_tai_khoans');
     }
 };
