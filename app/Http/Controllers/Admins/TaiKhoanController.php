@@ -22,7 +22,7 @@ class TaiKhoanController extends Controller
         $title = "Danh sách tài khoản";
         $listTaiKhoan = $this->tai_khoans->getTaiKhoan();
         
-        return view('admins.taikhoans.index', compact('getTaiKhoan','title'));
+        return view('admins.taikhoans.index', compact('listTaiKhoan','title'));
         //
     }
 
@@ -31,6 +31,8 @@ class TaiKhoanController extends Controller
      */
     public function create()
     {
+        $title = "Thêm tài khoản";
+        return view('admins.taikhoans.them', compact('title'));
         //
     }
 
@@ -39,7 +41,11 @@ class TaiKhoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isMethod('POST')){
+            $data = $request->except('_token');
+            $this->tai_khoans->addTaiKhoan($data);
+            return redirect()->route('taikhoan.index')->with('thongbao', "Thêm tài khoản thành công");
+        }
     }
 
     /**

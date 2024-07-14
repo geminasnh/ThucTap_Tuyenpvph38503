@@ -23,8 +23,8 @@ Route::get('/', function () {
 Route::get('/admin', function () {
     return view('layouts.admin');
 })->name('admin');
-Route::resource('sanpham',\App\Http\Controllers\Admins\SanPhamController::class);
-Route::resource('donhang',\App\Http\Controllers\Admins\DonHangController::class);
-Route::resource('binhluan',\App\Http\Controllers\Admins\BinhLuanController::class);
-Route::resource('taikhoan',\App\Http\Controllers\Admins\TaiKhoanController::class);
+Route::resource('sanpham',SanPhamController::class);
+Route::resource('donhang',DonHangController::class);
+Route::resource('binhluan',BinhLuanController::class);
+Route::resource('taikhoan',TaiKhoanController::class);
 

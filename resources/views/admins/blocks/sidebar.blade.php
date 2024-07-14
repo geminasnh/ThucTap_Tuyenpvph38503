@@ -91,7 +91,7 @@
                         sách</a>
                 </li>
                 <li>
-                    <a href="add-user.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                    <a href="{{route('taikhoan.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
             </ul>
         </li>{{--Tai khoan--}}

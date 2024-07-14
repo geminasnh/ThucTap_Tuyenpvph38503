@@ -13,4 +13,8 @@ class TaiKhoan extends Model
         $tai_khoans = DB::table('tai_khoans')->get();
         return $tai_khoans;
     }
+    public function addTaiKhoan($data)
+    {
+        DB::table('tai_khoans')->insert($data);
+    }
 }

@@ -55,7 +55,7 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Ảnh đại diện</th>
+                
                     <th scope="col">Tài khoản</th>
                     <th scope="col">Họ Tên</th>
                     <th scope="col">Email</th>
@@ -64,27 +64,29 @@
                     <th scope="col">Địa chỉ</th>
                     <th scope="col">Ngày sinh</th>
                     <th scope="col">Mật khẩu</th>
-                    <th scope="col">Trạng thái</th>
+                 
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($getTaiKhoan as $index => $pt)
+                @foreach($listTaiKhoan as $index => $pt)
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
-                                    <h6 class="text-md mb-0 fw-normal">{{$pt->ten_san_pham}}</h6>
+                                    <h6 class="text-md mb-0 fw-normal">{{$index +1}}</h6>
                                     <span class="text-sm text-secondary-light fw-normal">{{$pt->danh_muc_id}}</span>
                                 </div>
                             </div>
                         </td>
-                        <td>{{$pt->so_luong}}</td>
-                        <td>{{$pt->gia}}</td>
-                        <td>{{$pt->gia_khuyen_mai}}</td>
-                        <td>{{$pt->ngay_nhap}}</td>
-                        <td>{{$pt->mo_ta}}</td>
+                        <td>{{$pt->tai_khoan}}</td>
+                        <td>{{$pt->ho_ten}}</td>
+                        <td>{{$pt->email}}</td>
+                        <td>{{$pt->so_dien_thoai}}</td>
+                        <td>{{$pt->dia_chi}}</td>
+                        <td>{{$pt->ngay_sinh}}</td>
+                        <td>{{$pt->mat_khau}}</td>
                         <td>
                             <a href="#"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
