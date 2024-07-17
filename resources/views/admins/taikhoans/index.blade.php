@@ -77,11 +77,11 @@
                                 <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
                                     <h6 class="text-md mb-0 fw-normal">{{$index +1}}</h6>
-                                    <span class="text-sm text-secondary-light fw-normal">{{$pt->danh_muc_id}}</span>
+                                    <span class="text-sm text-secondary-light fw-normal">{{$pt->chuc_vu_id}}</span>
                                 </div>
                             </div>
                         </td>
-                        <td><img src="{{$pt->hinh_anh}}" alt=""></td>
+                        <td><img src="{{$pt->anh_dai_dien}}" alt=""></td>
                         <td>{{$pt->tai_khoan}}</td>
                         <td>{{$pt->ho_ten}}</td>
                         <td>{{$pt->email}}</td>
