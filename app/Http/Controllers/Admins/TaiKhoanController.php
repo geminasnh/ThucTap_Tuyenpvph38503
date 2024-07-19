@@ -21,7 +21,7 @@ class TaiKhoanController extends Controller
     {
         $title = "Danh sách tài khoản";
         $listTaiKhoan = $this->tai_khoans->getTaiKhoan();
-        
+
         return view('admins.taikhoans.index', compact('listTaiKhoan','title'));
         //
     }

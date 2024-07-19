@@ -22,4 +22,10 @@ class SanPham extends Model
     {
         DB::table('san_phams')->insert($data);
     }
+
+    public function getDetailProduct($id)
+    {
+        $san_pham = DB::table('san_phams')->where('id',$id)->first();
+        return $san_pham;
+    }
 }
