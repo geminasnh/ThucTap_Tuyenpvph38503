@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamRequest;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SanPhamController extends Controller
 {
@@ -38,14 +39,14 @@ class SanPhamController extends Controller
     public function store(SanPhamRequest $request)
     {
         if ($request->isMethod('POST')) {
-            $data = $request->except('_token');
+            $duLieu = $request->except('_token');
             if ($request->hasFile('hinh_anh')) {
                 $imgPath = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
             } else {
                 $imgPath = null;
             }
-            $data['hinh_anh'] = $imgPath;
-            $this->san_pham->addProduct($data);
+            $duLieu['hinh_anh'] = $imgPath;
+            $this->san_pham->addProduct($duLieu);
             return redirect()->route('sanpham.index')->with('thongbao', "Thêm sản phẩm thành công");
         }
     }
@@ -73,7 +74,40 @@ class SanPhamController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            //dd($request->all());
+            $params = $request->except('_token', '_method');
+
+            $sanPham = SanPham::findOrFail($id);
+            if ($request->hasFile('hinh_anh')) {
+                Storage::disk('public')->delete($sanPham->hinh_anh);
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
+            }else{
+                $params['hinh_anh'] = $sanPham->hinh_anh;
+            }
+
+            $this->san_pham->updateProduct($id, $params);
+            return redirect()->route('sanpham.index')->with('thongbao', "Sửa sản phẩm thành công");
+        }
+        /*if ($request->isMethod('PUT')) {
+            $params = $request->except('_token', '_method');
+            $sanPham = SanPham::findOrFail($id);
+            if ($request->hasFile('hinh_anh')) {
+                Storage::disk('public')->delete($sanPham->hinh_anh);
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
+            } else {
+                $params['hinh_anh'] = $sanPham->hinh_anh;
+            }
+
+            //query builder
+            $this->san_pham->updateProduct($id, $params);
+
+            return redirect()->route('sanpham.index')->with('success', "Sua san pham thanh cong!");
+        }*/
+
+
+
+
     }
 
     /**

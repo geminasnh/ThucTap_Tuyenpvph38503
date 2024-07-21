@@ -23,6 +23,7 @@
                         <div class="card-body">
                             <form action="{{route('sanpham.update', $chiTietSp->id)}}" method="POST"
                                   enctype="multipart/form-data">
+
                                 @csrf
                                 @method('PUT')
 
@@ -92,7 +93,8 @@
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giá khuyến mãi
                                     </label>
                                     <input type="text" class="form-control radius-8" name="gia_khuyen_mai"
-                                           placeholder="Nhập giá khuyến mãi sản phẩm" value="{{ $chiTietSp->gia_khuyen_mai }}">
+                                           placeholder="Nhập giá khuyến mãi sản phẩm"
+                                           value="{{ $chiTietSp->gia_khuyen_mai }}">
                                 </div>
 
                                 <div class="mb-20">
@@ -108,7 +110,8 @@
 
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mô tả </label>
-                                    <textarea cols="30" rows="3" class="form-control radius-8" name="mo_ta">{{$chiTietSp->mo_ta}}</textarea>
+                                    <textarea cols="30" rows="3" class="form-control radius-8"
+                                              name="mo_ta"> {{$chiTietSp->mo_ta}} </textarea>
                                 </div>
 
                                 <div class="mb-20">
@@ -116,10 +119,14 @@
                                         mục sản phẩm <span class="text-danger-600">*</span> </label>
                                     <select
                                         class="form-control radius-8 form-select @error('danh_muc_id') is-invalid @enderror"
-                                        name="danh_muc_id" id="desig" >
+                                        name="danh_muc_id" id="desig">
                                         <option value="">Vui lòng chọn</option>
-                                        <option value="1" {{$chiTietSp->danh_muc_id == '1' ? 'selected' : ''}}>Danh mục 1</option>
-                                        <option value="2" {{$chiTietSp->danh_muc_id == '2' ? 'selected' : ''}}>Danh mục 2</option>
+                                        <option value="1" {{$chiTietSp->danh_muc_id == '1' ? 'selected' : ''}}>Danh mục
+                                            1
+                                        </option>
+                                        <option value="2" {{$chiTietSp->danh_muc_id == '2' ? 'selected' : ''}}>Danh mục
+                                            2
+                                        </option>
                                     </select>
                                     @error('danh_muc_id')
                                     <p class="text-danger">{{$message}}</p>
@@ -130,7 +137,7 @@
                                     <a href="{{route('sanpham.index')}}" class="btn btn-light-100 text-dark "><i
                                             class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
-                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm
+                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Sửa
                                     </button>
                                 </div>
 
