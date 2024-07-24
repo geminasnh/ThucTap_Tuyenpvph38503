@@ -12,9 +12,7 @@ class SanPham extends Model
 
     public function getListProduct()
     {
-        $listProduct = DB::table('san_phams')
-            ->orderBy('ngay_nhap','DESC')
-            ->get();
+        $listProduct = DB::table('san_phams')->get();
         return $listProduct;
     }
 
@@ -22,4 +20,31 @@ class SanPham extends Model
     {
         DB::table('san_phams')->insert($data);
     }
+
+    public function getDetailProduct($id)
+    {
+        $san_pham = DB::table('san_phams')->where('id', $id)->first();
+        return $san_pham;
+    }
+
+    public function updateProduct($id, $duLieu)
+    {
+        DB::table('san_phams')->where('id', $id)->update($duLieu);
+    }
+
+
+    protected $table = 'san_phams';
+    protected $fillable = [
+        'ma_sp',
+        'hinh_anh',
+        'ten_san_pham',
+        'so_luong',
+        'gia',
+        'gia_khuyen_mai',
+        'ngay_nhap',
+        'mo_ta',
+        'danh_muc_id',
+
+    ];
+
 }

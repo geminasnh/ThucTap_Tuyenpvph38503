@@ -21,65 +21,105 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                            <form action="{{route('sanpham.store')}}" method="POST">
+                            <form action="{{route('sanpham.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="text-md text-primary-light mb-16">Ảnh sản phẩm</h6>
 
-                                <div class="upload-image-wrapper d-flex align-items-center gap-3 flex-wrap mb-24 mt-16">
-                                    <div class="uploaded-imgs-container d-flex gap-3 flex-wrap"></div>
-                                    <label class="upload-file-multiple h-120-px w-120-px border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50 bg-hover-neutral-200 d-flex align-items-center flex-column justify-content-center gap-1" for="upload-file-multiple">
-                                        <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
-                                        <span class="fw-semibold text-secondary-light">Tải lên</span>
-                                        <input id="upload-file-multiple" type="file" name="hinh_anh"  hidden multiple/>
-                                    </label>
-                                </div><!--End Upload IMG -->
-
-                                {{--<div class="card-body p-24">
-                                    <label for="file-upload-name" class="mb-16 border border-neutral-600 fw-medium text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
+                                <div class="card-body p-24">
+                                    <label for="file-upload" class="mb-16 border border-neutral-600 fw-medium
+                                    text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
                                         <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
-                                        Click to upload
-                                        <input type="file" class="form-control w-auto mt-24 form-control-lg" id="file-upload-name" multiple hidden>
+                                        Tải ảnh lên
+                                        <input type="file" class="form-control w-auto mt-24 form-control-lg"
+                                               id="file-upload"
+                                               name="hinh_anh" onchange="showImg(event)" hidden>
                                     </label>
-                                    <ul id="uploaded-img-names" class=""></ul>
-                                </div>--}} {{--Upload file--}}
-
-                                <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tên sản phẩm <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="ten_san_pham" placeholder="Nhập tên sản phẩm">
+                                    <img src="" id="uploaded-img" style="display: none; width: 150px">
                                 </div>
                                 <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Số lượng <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="so_luong" placeholder="Nhập số lượng">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mã sản phẩm
+                                        <span class="text-danger-600">*</span></label>
+                                    <input type="text"
+                                           class="form-control radius-8 @error('ma_sp') is-invalid @enderror"
+                                           name="ma_sp"
+                                           placeholder="Nhập mã sản phẩm" value="{{old('ma_sp')}}">
+                                    @error('ma_sp')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giá gốc </label>
-                                    <input type="text" class="form-control radius-8" name="gia" placeholder="Nhập giá tiền sản phẩm">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tên sản phẩm
+                                        <span class="text-danger-600">*</span></label>
+                                    <input type="text"
+                                           class="form-control radius-8 @error('ten_san_pham') is-invalid @enderror"
+                                           name="ten_san_pham"
+                                           placeholder="Nhập tên sản phẩm" value="{{old('ten_san_pham')}}">
+                                    @error('ten_san_pham')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giá khuyến mãi <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="gia_khuyen_mai" placeholder="Nhập giá khuyến mãi sản phẩm">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Số lượng <span
+                                            class="text-danger-600">*</span></label>
+                                    <input type="text"
+                                           class="form-control radius-8 @error('so_luong') is-invalid @enderror"
+                                           name="so_luong"
+                                           placeholder="Nhập số lượng" value="{{old('so_luong')}}">
+                                    @error('so_luong')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ngày nhập <span class="text-danger-600">*</span></label>
-                                    <input type="date" class="form-control radius-8" name="ngay_nhap">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giá
+                                        gốc <span class="text-danger-600">*</span></label>
+                                    <input type="text" class="form-control radius-8 @error('gia') is-invalid @enderror"
+                                           name="gia"
+                                           placeholder="Nhập giá tiền sản phẩm" value="{{old('gia')}}">
+                                    @error('gia')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="mb-20">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giá khuyến mãi
+                                    </label>
+                                    <input type="text" class="form-control radius-8" name="gia_khuyen_mai"
+                                           placeholder="Nhập giá khuyến mãi sản phẩm">
+                                </div>
+                                <div class="mb-20">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ngày nhập
+                                        <span class="text-danger-600">*</span></label>
+                                    <input type="date"
+                                           class="form-control radius-8 @error('ngay_nhap') is-invalid @enderror"
+                                           name="ngay_nhap" value="{{old('ngay_nhap')}}">
+                                    @error('ngay_nhap')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mô tả </label>
                                     <textarea cols="30" rows="3" class="form-control radius-8" name="mo_ta"> </textarea>
                                 </div>
                                 <div class="mb-20">
-                                    <label for="desig" class="form-label fw-semibold text-primary-light text-sm mb-8">Danh mục sản phẩm <span class="text-danger-600">*</span> </label>
-                                    <select class="form-control radius-8 form-select" name="danh_muc_id" id="desig">
-                                        <option selected>Vui lòng chọn</option>
+                                    <label for="desig" class="form-label fw-semibold text-primary-light text-sm mb-8">Danh
+                                        mục sản phẩm <span class="text-danger-600">*</span> </label>
+                                    <select
+                                        class="form-control radius-8 form-select @error('danh_muc_id') is-invalid @enderror"
+                                        name="danh_muc_id" id="desig" value="{{old('danh_muc_id')}}">
+                                        <option value="">Vui lòng chọn</option>
+                                        <option value="1">Danh mục 1</option>
                                         <option value="2">Danh mục 2</option>
-                                        <option value="3">Danh mục 1</option>
                                     </select>
+                                    @error('danh_muc_id')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
 
                                 <div class="text-center mt-3">
-                                    <a href="{{route('sanpham.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+                                    <a href="{{route('sanpham.index')}}" class="btn btn-light-100 text-dark "><i
+                                            class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
-                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
+                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -89,79 +129,29 @@
         </div>
     </div>
 
+@endsection
+
+@section('js')
     <script>
-        /*upload img*/
-        const fileInputMultiple = document.getElementById("upload-file-multiple");
-        const uploadedImgsContainer = document.querySelector(".uploaded-imgs-container");
+        function showImg(event) {
+            const img_sp = document.querySelector('#uploaded-img');
 
-        fileInputMultiple.addEventListener("change", (e) => {
-            const files = e.target.files;
+            const file = event.target.files[0];
 
-            Array.from(files).forEach(file => {
-                const src = URL.createObjectURL(file);
+            //lay link anh vua chon
+            const reader = new FileReader();
 
-                const imgContainer = document.createElement('div');
-                imgContainer.classList.add('position-relative', 'h-120-px', 'w-120-px', 'border', 'input-form-light', 'radius-8', 'overflow-hidden', 'border-dashed', 'bg-neutral-50');
-
-                const removeButton = document.createElement('button');
-                removeButton.type = 'button';
-                removeButton.classList.add('uploaded-img__remove', 'position-absolute', 'top-0', 'end-0', 'z-1', 'text-2xxl', 'line-height-1', 'me-8', 'mt-8', 'd-flex');
-                removeButton.innerHTML = '<iconify-icon icon="radix-icons:cross-2" class="text-xl text-danger-600"></iconify-icon>';
-
-                const imagePreview = document.createElement('img');
-                imagePreview.classList.add('w-100', 'h-100', 'object-fit-cover');
-                imagePreview.src = src;
-
-                imgContainer.appendChild(removeButton);
-                imgContainer.appendChild(imagePreview);
-                uploadedImgsContainer.appendChild(imgContainer);
-
-                removeButton.addEventListener('click', () => {
-                    URL.revokeObjectURL(src);
-                    imgContainer.remove();
-                });
-            });
-
-            fileInputMultiple.value = '';
-        });//end upload img
-
-
-        /*Upload file*/
-        /*document.getElementById('file-upload-name').addEventListener('change', function(event) {
-            var fileInput = event.target;
-            var fileList = fileInput.files;
-            var ul = document.getElementById('uploaded-img-names');
-
-            ul.classList.add('show-uploaded-img-name');
-
-            for (var i = 0; i < fileList.length; i++) {
-                var li = document.createElement('li');
-                li.classList.add('uploaded-image-name-list', 'text-primary-600', 'fw-semibold', 'd-flex', 'align-items-center', 'gap-2');
-
-                var iconifyIcon = document.createElement('iconify-icon');
-                iconifyIcon.setAttribute('icon', 'ph:link-break-light');
-                iconifyIcon.classList.add('text-xl', 'text-secondary-light');
-
-                var crossIconifyIcon = document.createElement('iconify-icon');
-                crossIconifyIcon.setAttribute('icon', 'radix-icons:cross-2');
-                crossIconifyIcon.classList.add('remove-image','text-xl', 'text-secondary-light', 'text-hover-danger-600');
-
-                crossIconifyIcon.addEventListener('click', (function(liToRemove) {
-                    return function() {
-                        ul.removeChild(liToRemove);
-                    };
-                })(li));
-
-                li.appendChild(iconifyIcon);
-
-                li.appendChild(document.createTextNode(' ' + fileList[i].name));
-
-                li.appendChild(crossIconifyIcon);
-
-                ul.appendChild(li);
+            reader.onload = function () {
+                //lay link vao src
+                img_sp.src = reader.result;
+                img_sp.style.display = 'block';
             }
-        });*/
 
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+
+        }
 
     </script>
 @endsection
