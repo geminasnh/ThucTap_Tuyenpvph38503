@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\BinhLuanController;
 use App\Http\Controllers\Admins\DonHangController;
@@ -27,4 +30,13 @@ Route::resource('sanpham',SanPhamController::class);
 Route::resource('donhang',DonHangController::class);
 Route::resource('binhluan',BinhLuanController::class);
 Route::resource('taikhoan',TaiKhoanController::class);
+
+
+//Auth::routes();
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('login', [AuthController::class, 'showLogin']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::get('register', [AuthController::class, 'showRegister']);
+Route::post('register', [AuthController::class, 'register'])->name('register');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

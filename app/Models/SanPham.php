@@ -32,6 +32,10 @@ class SanPham extends Model
         DB::table('san_phams')->where('id', $id)->update($duLieu);
     }
 
+    public function deleteProduct($id)
+    {
+        DB::table('san_phams')->where('id', $id)->delete();
+    }
 
     protected $table = 'san_phams';
     protected $fillable = [

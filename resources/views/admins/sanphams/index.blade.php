@@ -70,7 +70,8 @@
                         <td>{{$item->ma_sp}}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::Url($item->hinh_anh) }}" alt="" style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::Url($item->hinh_anh) }}" alt=""
+                                     style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
                                     <h6 class="text-md mb-0 fw-normal">{{$item->ten_san_pham}}</h6>
                                     <span class="text-sm text-secondary-light fw-normal">{{$item->danh_muc_id}}</span>
@@ -82,15 +83,21 @@
                         <td>{{$item->gia_khuyen_mai}}</td>
                         <td>{{$item->ngay_nhap}}</td>
                         <td>{{$item->mo_ta}}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{route('sanpham.edit',$item->id)}}"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                             </a>
-                            <a href="#"
-                               class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
-                            </a>
+                            <form method="POST" action="{{route('sanpham.destroy', $item->id)}}"
+                                  onsubmit="return confirm('Xác nhận xoá?')" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button
+                                    class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                </button>
+                            </form>
+
                         </td>
                     </tr>
                 @endforeach

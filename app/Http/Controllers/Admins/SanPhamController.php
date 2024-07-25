@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamRequest;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Storage;
 
 class SanPhamController extends Controller
@@ -89,32 +90,25 @@ class SanPhamController extends Controller
             $this->san_pham->updateProduct($id, $params);
             return redirect()->route('sanpham.index')->with('thongbao', "Sửa sản phẩm thành công");
         }
-        /*if ($request->isMethod('PUT')) {
-            $params = $request->except('_token', '_method');
-            $sanPham = SanPham::findOrFail($id);
-            if ($request->hasFile('hinh_anh')) {
-                Storage::disk('public')->delete($sanPham->hinh_anh);
-                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
-            } else {
-                $params['hinh_anh'] = $sanPham->hinh_anh;
-            }
-
-            //query builder
-            $this->san_pham->updateProduct($id, $params);
-
-            return redirect()->route('sanpham.index')->with('success', "Sua san pham thanh cong!");
-        }*/
-
-
-
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        if ($request->isMethod('DELETE')){
+            $sanPham = $this->san_pham->getDetailProduct($id);
+            if ($sanPham) {
+                $this->san_pham->deleteProduct($id);
+                if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)) {
+                    Storage::disk('public')->delete($sanPham->hinh_anh);
+                }
+                return redirect()->route('sanpham.index')->with('thongbao', "Xoas sản phẩm thành công");
+            }
+        }
     }
+
+
 }
