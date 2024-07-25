@@ -24,9 +24,9 @@ use App\Http\Controllers\Admins\TaiKhoanController;
 Route::get('/', function () {
     return view('welcome');
 });
-/*Route::get('/admin', function () {
+Route::get('/admin', function () {
     return view('layouts.admin');
-})->name('admin');*/
+})->name('admin');
 Route::resource('sanpham', SanPhamController::class);
 Route::resource('donhang', DonHangController::class);
 Route::resource('binhluan', BinhLuanController::class);
@@ -41,17 +41,12 @@ Route::get('register', [AuthController::class, 'showRegister']);
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-/*Route::get('/admin', function (){
-   return view('layouts.admin');
-})->middleware('auth','auth.admin');*/
 
 
-Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
-    Route::get('/dashboard', function (){
-       return view('layouts.admin');
-    })->name('dashboard');
-
-
-});
+//Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
+//    Route::get('/dashboard', function (){
+//       return view('layouts.admin');
+//    })->name('dashboard');
+//});
 
 
