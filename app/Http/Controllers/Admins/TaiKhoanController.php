@@ -42,17 +42,16 @@ class TaiKhoanController extends Controller
      */
     public function store(TaiKhoanRequest $request)
     {
-        if ($request->isMethod('POST')) {
-            $duLieu = $request->except('_token');
-            if ($request->hasFile('anh_dai_dien')) {
-                $imgPath = $request->file('anh_dai_dien')->store('uploads/sanphams', 'public');
-            } else {
-                $imgPath = null;
-            }
-            $duLieu['anh_dai_dien'] = $imgPath;
-            $this->tai_khoans->addTaiKhoan($duLieu);
+        if($request->hasFile('anh_dai_dien')){
+            $filename = $request->file('anh_dai_dien')->store('uploads/baiviet', 'public');
+           }else{
+            $filename = null;
+           }
+           $params = $request->all();
+           $params['anh_dai_dien'] = $filename;
+           TaiKhoan::create($params);
             return redirect()->route('taikhoan.index')->with('thongbao', "Thêm tài khoản thành công");
-        }
+        
         
     }
 

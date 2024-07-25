@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td><img src="{{$pt->anh_dai_dien}}" alt=""></td>
+                        <td><img src="{{Storage::url($pt->anh_dai_dien)}}" alt=""></td>
                         <td>{{$pt->tai_khoan}}</td>
                         <td>{{$pt->ho_ten}}</td>
                         <td>{{$pt->email}}</td>
