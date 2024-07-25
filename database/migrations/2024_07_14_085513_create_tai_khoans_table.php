@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('gioi_tinh');
             $table->string('dia_chi');
             $table->date('ngay_sinh');
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->boolean('trang_thai')->default(true);
             $table->timestamps();
         });
