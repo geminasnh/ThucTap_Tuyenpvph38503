@@ -16,7 +16,11 @@
         </ul>
     </div>{{--end title--}}
 
-   
+    <script>
+        @if(session('success'))
+        alert('{{ session('success') }}');
+        @endif
+    </script>
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -37,8 +41,9 @@
                 </div>
             </div>
             <div class="d-flex flex-wrap align-items-center gap-3">
-                
-                <a href="{{route('danhmuc.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+
+                <a href="{{route('admins.danhmuc.create')}}" class="btn btn-sm btn-primary-600"><i
+                        class="ri-add-line"></i>
                     Thêm danh mục</a>
             </div>
         </div>
@@ -46,31 +51,35 @@
             <table class="table bordered-table mb-0">
                 <thead>
                 <tr>
-                    <th scope="col">Mã</th>
+                    <th scope="col">STT</th>
+                    <th scope="col">Hình ảnh</th>
                     <th scope="col">Tên danh mục</th>
-                   
+                    <th scope="col">Trạng thái</th>
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data as $index => $item)
                     <tr>
-                        <td>{{$item->id}}</td>
+                        <td>{{$index+1}}</td>
+                        <td><img src="{{\Illuminate\Support\Facades\Storage::url($item->hinh_anh)}}" alt="" width="100px"></td>
                         <td>{{$item->ten_danh_muc}}</td>
-                        <td>
-                            <a href="{{route('danhmuc.edit',$item->id)}}"
+                        <td class="{{$item->trang_thai == true ? 'text-success' : 'text-danger'}}">
+                            {{$item->trang_thai == true ? 'Hiển thị' : 'Ẩn'}}</td>
+                        <td class="text-nowrap">
+                            <a href="{{route('admins.danhmuc.edit',$item->id)}}"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                             </a>
-                            <form action="{{route('danhmuc.destroy',$item->id)}}" method="post">
+                            <form action="{{route('admins.danhmuc.destroy',$item->id)}}" method="post" class="d-inline-flex">
                                 @csrf
                                 @method("DELETE")
                                 <button onclick="return confirm('ban chắc chắn xóa')" type="submit"
-                                    class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
-                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                        class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                 </button>
                             </form>
-                            
+
                         </td>
                     </tr>
                 @endforeach

@@ -17,7 +17,7 @@ class CheckRoleAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user() === User::ROLE_ADMIN) {
+        if (Auth::check() && Auth::user()->role === User::ROLE_ADMIN) {
             return $next($request);
         }
         abort(403);

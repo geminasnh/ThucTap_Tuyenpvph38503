@@ -120,8 +120,8 @@
                     <div
                             class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
                         <div>
-                            <h6 class="text-lg text-primary-light fw-semibold mb-2">{{--{{\Illuminate\Support\Facades\Auth::user()->name}}--}}</h6>
-                            <span class="text-secondary-light fw-medium text-sm">Admin</span>
+                            <h6 class="text-lg text-primary-light fw-semibold mb-2">{{\Illuminate\Support\Facades\Auth::user()->name}}</h6>
+                            <span class="text-secondary-light fw-medium text-sm">{{\Illuminate\Support\Facades\Auth::user()->role}}</span>
                         </div>
                         <button type="button" class="hover-text-danger">
                             <iconify-icon icon="radix-icons:cross-1" class="icon text-xl"></iconify-icon>

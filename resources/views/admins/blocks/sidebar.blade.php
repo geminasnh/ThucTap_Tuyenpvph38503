@@ -2,7 +2,7 @@
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
 </button>
 <div>
-    <a href="{{route('admin')}}" class="sidebar-logo">
+    <a href="{{route('admins.dashboard')}}" class="sidebar-logo">
         <img src="{{ asset('img/lg4.png') }}" alt="site logo" class="light-logo">
     </a>
 </div>
@@ -57,11 +57,11 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                    <a href="{{route('admins.danhmuc.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
                 <li>
-                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                    <a href="{{route('admins.danhmuc.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
                         Thêm</a>
                 </li>
             </ul>

@@ -14,13 +14,14 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        $user = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        $credentials = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string'],
         ]);
 
-        if (Auth::attempt($user)) {
-            return redirect()->intended('admin');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('admins/dashboard');
         }
 
         return back()->withErrors([
@@ -41,13 +42,16 @@ class AuthController extends Controller
         ]);
 
         $user = User::query()->create($data);
+
         Auth::login($user);
 
-        return redirect()->intended('admin');
+        return redirect()->intended('/login');
     }
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/login');
     }
 }
