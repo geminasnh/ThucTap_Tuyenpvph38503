@@ -46,7 +46,7 @@
                     <option value="1">Hoa quả</option>
                     <option value="2">Rau</option>
                 </select>
-                <a href="{{route('sanpham.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+                <a href="{{route('taikhoan.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
                     Thêm sản phẩm</a>
             </div>
         </div>
@@ -87,6 +87,7 @@
                         <td>{{$pt->email}}</td>
                         <td>{{$pt->so_dien_thoai}}</td>
                         <td>{{$pt->dia_chi}}</td>
+                        <td>{{$pt->gioi_tinh}}</td>
                         <td>{{$pt->ngay_sinh}}</td>
                         <td>{{$pt->mat_khau}}</td>
                         <td>

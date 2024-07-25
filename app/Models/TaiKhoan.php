@@ -18,4 +18,17 @@ class TaiKhoan extends Model
     {
         DB::table('tai_khoans')->insert($data);
     }
+
+    protected $fillable = [
+        'anh_dai_dien',
+'tai_khoan',
+'email',
+'so_dien_thoai',
+'gioi_tinh',
+'dia_chi',
+'ngay_sinh',
+'mat_khau',
+'chuc_vu_id',
+'trang_thai_tai_khoan_id',
+    ];
 }

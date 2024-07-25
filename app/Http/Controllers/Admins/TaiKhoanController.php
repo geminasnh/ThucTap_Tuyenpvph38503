@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaiKhoanRequest;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
 
@@ -39,13 +40,20 @@ class TaiKhoanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaiKhoanRequest $request)
     {
-        if ($request->isMethod('POST')){
-            $data = $request->except('_token');
-            $this->tai_khoans->addTaiKhoan($data);
+        if ($request->isMethod('POST')) {
+            $duLieu = $request->except('_token');
+            if ($request->hasFile('anh_dai_dien')) {
+                $imgPath = $request->file('anh_dai_dien')->store('uploads/sanphams', 'public');
+            } else {
+                $imgPath = null;
+            }
+            $duLieu['anh_dai_dien'] = $imgPath;
+            $this->tai_khoans->addTaiKhoan($duLieu);
             return redirect()->route('taikhoan.index')->with('thongbao', "Thêm tài khoản thành công");
         }
+        
     }
 
     /**
