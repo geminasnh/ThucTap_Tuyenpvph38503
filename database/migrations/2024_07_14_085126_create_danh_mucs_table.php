@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('danh_mucs', function (Blueprint $table) {
             $table->id();
+            $table->string('hinh_anh')->nullable();
             $table->string('ten_danh_muc');
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
         });
     }

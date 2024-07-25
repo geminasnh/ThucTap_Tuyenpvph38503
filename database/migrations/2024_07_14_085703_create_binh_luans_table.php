@@ -17,10 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('san_pham_id');
             $table->text('noi_dung');
             $table->dateTime('thoi_gian');
-            $table->unsignedBigInteger('trang_thai_binh_luan_id')->default(1);
-            $table->timestamps();
+            $table->boolean('trang_thai')->default(true);
 
-            $table->foreign('trang_thai_binh_luan_id')->references('id')->on('trang_thai_binh_luans')->onDelete('cascade');
+            $table->timestamps();
             $table->foreign('tai_khoan_id')->references('id')->on('tai_khoans')->onDelete('cascade');
             $table->foreign('san_pham_id')->references('id')->on('san_phams')->onDelete('cascade');
         });

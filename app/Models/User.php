@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 'Nhân viên';
+    const ROLE_USER = 'Khách hàng';
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,7 +25,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
+    public function taiKhoan()
+    {
+        return $this->hasOne(TaiKhoan::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

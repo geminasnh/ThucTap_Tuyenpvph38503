@@ -23,12 +23,11 @@ return new class extends Migration
             $table->double('tong_tien', 10, 2);
             $table->text('ghi_chu')->nullable();
             $table->unsignedBigInteger('phuong_thuc_thanh_toan_id');
-            $table->unsignedBigInteger('trang_thai_id');
+            $table->boolean('trang_thai')->default(true);
             $table->timestamps();
 
             $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
             $table->foreign('phuong_thuc_thanh_toan_id')->references('id')->on('phuong_thuc_thanh_toans');
-            $table->foreign('trang_thai_id')->references('id')->on('trang_thai_don_hangs');
 
         });
     }

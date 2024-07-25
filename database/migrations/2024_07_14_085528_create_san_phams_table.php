@@ -13,17 +13,23 @@ return new class extends Migration
     {
         Schema::create('san_phams', function (Blueprint $table) {
             $table->id();
-            $table->string('hinh_anh')->nullable();
+            $table->string('ma_sp',10)->unique();
             $table->string('ten_san_pham');
+            $table->string('hinh_anh')->nullable();
+            $table->double('gia');
+            $table->double('gia_khuyen_mai')->nullable();
+            $table->string('mo_ta_ngan')->nullable();
+            $table->longText('noi_dung')->nullable();
             $table->unsignedInteger('so_luong');
-            $table->double('gia', 10, 2);
-            $table->double('gia_khuyen_mai', 10, 2)->nullable();
+            $table->unsignedInteger('luot_xem');
             $table->date('ngay_nhap');
-            $table->text('mo_ta')->nullable();
-            $table->unsignedBigInteger('danh_muc_id');
+            $table->foreignIdFor(\App\Models\DanhMuc::class)->constrained();
+            $table->boolean('is_type')->default(true);
+            $table->boolean('is_new')->default(true);
+            $table->boolean('is_hot')->default(true);
+            $table->boolean('is_home')->default(true);
             $table->timestamps();
 
-            $table->foreign('danh_muc_id')->references('id')->on('danh_mucs')->onDelete('cascade');
         });
     }
 

@@ -37,18 +37,38 @@ class SanPham extends Model
         DB::table('san_phams')->where('id', $id)->delete();
     }
 
-    protected $table = 'san_phams';
     protected $fillable = [
         'ma_sp',
-        'hinh_anh',
         'ten_san_pham',
-        'so_luong',
+        'hinh_anh',
         'gia',
         'gia_khuyen_mai',
+        'mo_ta_ngan',
+        'noi_dung',
+        'so_luong',
+        'luot_xem',
         'ngay_nhap',
-        'mo_ta',
         'danh_muc_id',
-
+        'is_type',
+        'is_new',
+        'is_hot',
+        'is_home',
     ];
 
+    protected $casts = [
+        'is_type' => 'boolean',
+        'is_new' => 'boolean',
+        'is_hot' => 'boolean',
+        'is_home' => 'boolean',
+    ];
+
+    public function danhMuc()
+    {
+        return $this->belongsTo(DanhMuc::class);
+    }
+
+    public function hinhAnhSanPham()
+    {
+        return $this->hasMany(HinhAnhSanPham::class);
+    }
 }
