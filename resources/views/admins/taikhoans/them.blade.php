@@ -21,7 +21,7 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                             <form action="{{route('taikhoan.store')}}" method="POST">
+                             <form action="{{route('taikhoan.store')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="text-md text-primary-light mb-16">Ảnh tai khoan</h6>
 
@@ -91,7 +91,7 @@
                                 <div class="text-center mt-3">
                                     <a href="{{route('taikhoan.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
-                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
+                                    <button  class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
                                 </div>
                             </form>
                         </div>

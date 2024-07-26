@@ -57,11 +57,11 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="{{route('admins.danhmuc.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
                 <li>
-                    <a href="{{route('admins.danhmuc.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
                         Thêm</a>
                 </li>
             </ul>

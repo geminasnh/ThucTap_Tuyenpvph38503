@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaiKhoanRequest;
 use App\Models\TaiKhoan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class TaiKhoanController extends Controller
@@ -42,17 +43,16 @@ class TaiKhoanController extends Controller
      */
     public function store(TaiKhoanRequest $request)
     {
-        if ($request->isMethod('POST')) {
-            $duLieu = $request->except('_token');
-            if ($request->hasFile('anh_dai_dien')) {
-                $imgPath = $request->file('anh_dai_dien')->store('uploads/sanphams', 'public');
-            } else {
-                $imgPath = null;
-            }
-            $duLieu['anh_dai_dien'] = $imgPath;
-            $this->tai_khoans->addTaiKhoan($duLieu);
+        if($request->hasFile('anh_dai_dien')){
+            $filename = $request->file('anh_dai_dien')->store('uploads/taikhoan', 'public');
+           }else{
+            $filename = null;
+           }
+           $params = $request->all();
+           $params['anh_dai_dien'] = $filename;
+           TaiKhoan::create($params);
             return redirect()->route('taikhoan.index')->with('thongbao', "Thêm tài khoản thành công");
-        }
+        
         
     }
 
@@ -75,16 +75,26 @@ class TaiKhoanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, TaiKhoan $taikhoan)
     {
-        //
+        if($request->hasFile('anh_dai_dien')){
+            if($taikhoan->hinh_anh){
+                Storage::disk('public')->delete($taikhoan->hinh_anh);
+            }
+           $params['anh_dai_dien']= $request->file('anh_dai_dien')->store('uploads/taikhoan', 'public');
+        }else {
+            $params['anh_dai_dien'] = $taikhoan->hinh_anh;
+        }
+        $taikhoan->update($params);
+        return redirect()->route('taikhoan.index')->with('thongbao', "Sửa tài khoản thành công");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(TaiKhoan $taiKhoan)
     {
-        //
+        $taiKhoan->delete();
+        return redirect()->route('taikhoan.index')->with('thongbao', "Xóa tài khoản thành công");
     }
 }

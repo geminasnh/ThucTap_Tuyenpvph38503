@@ -17,10 +17,7 @@ class TaiKhoan extends Model
         return $tai_khoans;
     }
 
-    public function addTaiKhoan($data)
-    {
-        DB::table('tai_khoans')->insert($data);
-    }
+ 
 
     protected $fillable = [
         'anh_dai_dien',
