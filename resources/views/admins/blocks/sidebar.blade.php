@@ -2,7 +2,7 @@
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
 </button>
 <div>
-    <a href="{{route('admin')}}" class="sidebar-logo">
+    <a href="" class="sidebar-logo">
         <img src="{{ asset('img/lg4.png') }}" alt="site logo" class="light-logo">
     </a>
 </div>

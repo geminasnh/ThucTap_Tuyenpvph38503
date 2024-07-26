@@ -21,8 +21,9 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                             <form action="{{route('taikhoan.store')}}" method="POST">
+                             <form action="{{route('taikhoan.update',$taikhoan->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <h6 class="text-md text-primary-light mb-16">Ảnh tai khoan</h6>
 
                                 <div class="upload-image-wrapper d-flex align-items-center gap-3 flex-wrap mb-24 mt-16">

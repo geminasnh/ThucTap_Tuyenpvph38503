@@ -46,12 +46,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 })->middleware('auth','auth.admin');*/
 
 
-Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
-    Route::get('/dashboard', function (){
-       return view('layouts.admin');
-    })->name('dashboard');
+// Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
+//     Route::get('/dashboard', function (){
+//        return view('layouts.admin');
+//     })->name('dashboard');
 
 
-});
+// });
 
 
