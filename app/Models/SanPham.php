@@ -71,4 +71,9 @@ class SanPham extends Model
     {
         return $this->hasMany(HinhAnhSanPham::class);
     }
+
+    public function binhLuan()
+    {
+        return $this->hasMany(BinhLuan::class);
+    }
 }

@@ -18,7 +18,7 @@
 
     <script>
         @if(session('success'))
-        alert('{{ session('success') }}');
+            alert('{{ session('success') }}');
         @endif
     </script>
 

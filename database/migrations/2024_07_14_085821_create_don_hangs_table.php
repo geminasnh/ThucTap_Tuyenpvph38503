@@ -26,8 +26,8 @@ return new class extends Migration
             $table->boolean('trang_thai')->default(true);
             $table->timestamps();
 
-            $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
-            $table->foreign('phuong_thuc_thanh_toan_id')->references('id')->on('phuong_thuc_thanh_toans');
+/*            $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
+            $table->foreign('phuong_thuc_thanh_toan_id')->references('id')->on('phuong_thuc_thanh_toans');*/
 
         });
     }

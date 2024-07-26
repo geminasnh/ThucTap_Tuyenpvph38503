@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('nguoi_dung_id');
             $table->timestamps();
 
-            $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
-        });
+       /*     $table->foreign('nguoi_dung_id')->references('id')->on('tai_khoans');
+       */ });
     }
 
     /**
