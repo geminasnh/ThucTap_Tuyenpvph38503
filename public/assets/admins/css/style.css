@@ -14,6 +14,17 @@ body{
     color: #7faf51;
 }
 
+.table {
+    width: 100%;
+    table-layout: fixed; /* Thay đổi chiều rộng của các cột để phù hợp với tổng chiều rộng của bảng */
+  }
+  
+  .table th, .table td {
+    overflow: hidden; /* Đảm bảo rằng nội dung không bị tràn ra ngoài cột */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm khi nội dung vượt quá chiều rộng cột */
+    white-space: nowrap; /* Ngăn chặn việc xuống dòng trong ô bảng */
+  }
+  
 /** ================================= Table Of Contents =================================== /
 1. Abstract Css
     1.1 Function Css

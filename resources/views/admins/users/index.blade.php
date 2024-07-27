@@ -12,15 +12,15 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">{{$title}}</li>
+            {{-- <li class="fw-medium">{{$title}}</li> --}}
         </ul>
     </div>{{--end title--}}
 
-    <script>
+    
         @if(session('thongbao'))
         alert('{{ session('thongbao') }}');
         @endif
-    </script>
+  
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -46,53 +46,59 @@
                     <option value="1">Hoa quả</option>
                     <option value="2">Rau</option>
                 </select>
-                <a href="{{route('taikhoan.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
-                    Thêm sản phẩm</a>
+                <a href="{{route('user.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+                    Thêm tài khoản</a>
             </div>
         </div>
-        <div class="card-body">
+     
+        <div class="card-body" >
+            <style>
+
+
+
+
+            </style>
             <table class="table bordered-table mb-0" >
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Họ Tên</th>
                 
                     <th scope="col">Tài khoản</th>
-                    <th scope="col">Họ Tên</th>
-                    <th scope="col">Email</th>
+                
+                    <th scope="col" >Email</th>
                     <th scope="col">Số điện thoại</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Địa chỉ</th>
-                    <th scope="col">Ngày sinh</th>
+                  
+                    <th scope="col">Ngày taọ</th>
                     <th scope="col">Mật khẩu</th>
                  
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($listTaiKhoan as $index => $pt)
+                @foreach($user as $index => $pt)
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
-                                    <h6 class="text-md mb-0 fw-normal">{{$index +1}}</h6>
+                                    <h6 class="text-md mb-0 fw-normal">{{++$i}}</h6>
                                     <span class="text-sm text-secondary-light fw-normal">{{$pt->chuc_vu_id}}</span>
                                 </div>
                             </div>
                         </td>
-                        <td><img src="{{Storage::url($pt->anh_dai_dien)}}" alt=""></td>
-                        <td>{{$pt->tai_khoan}}</td>
+                        <td>{{$pt->name}}</td>
                         <td>{{$pt->ho_ten}}</td>
+                        
                         <td>{{$pt->email}}</td>
                         <td>{{$pt->so_dien_thoai}}</td>
-                        <td>{{$pt->dia_chi}}</td>
-                        <td>{{$pt->gioi_tinh}}</td>
+                       
+                       
                         <td>{{$pt->ngay_sinh}}</td>
-                        <td>{{$pt->mat_khau}}</td>
+                        <td>{{$pt->password}}</td>
                         <td>
-                            <form action="{{route('taikhoan.destroy',$pt->id)}}" method="POST">
-                                <a href="{{route('taikhoan.edit',$pt->id)}}">Sửa</a>
+                            <form action="{{route('user.destroy',$pt->id)}}" method="POST">
+                                <a href="{{route('user.edit',$pt->id)}}">Sửa</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa</button>

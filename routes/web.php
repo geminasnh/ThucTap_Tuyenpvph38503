@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admins\DanhMucController;
+use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckRoleAdminMiddleware;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admins\BinhLuanController;
 use App\Http\Controllers\Admins\DonHangController;
 use App\Http\Controllers\Admins\SanPhamController;
-use App\Http\Controllers\Admins\TaiKhoanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('/', function () {
 
 Route::resource('donhang', DonHangController::class);
 Route::resource('binhluan', BinhLuanController::class);
-Route::resource('taikhoan', TaiKhoanController::class);
+Route::resource('user', UserController::class);
 
 
 //Auth::routes();
