@@ -25,7 +25,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+       
+'ho_ten',
+
+'so_dien_thoai',
+'ngay_sinh'
+
     ];
     public function taiKhoan()
     {

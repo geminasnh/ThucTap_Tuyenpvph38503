@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li>-</li>
-            <li class="fw-medium">{{$title}}</li>
+            {{-- <li class="fw-medium">{{$title}}</li> --}}
         </ul>
     </div>{{--end title--}}
 
@@ -21,78 +21,42 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                             <form action="{{route('taikhoan.update',$taikhoan->id)}}" method="POST" enctype="multipart/form-data">
+                             <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <h6 class="text-md text-primary-light mb-16">Ảnh tai khoan</h6>
-
-                                <div class="upload-image-wrapper d-flex align-items-center gap-3 flex-wrap mb-24 mt-16">
-                                    <div class="uploaded-imgs-container d-flex gap-3 flex-wrap"></div>
-                                 
-                                        <label class="upload-file-multiple h-120-px w-120-px border input-form-light radius-8 overflow-hidden border-dashed bg-neutral-50 bg-hover-neutral-200 d-flex align-items-center flex-column justify-content-center gap-1" for="upload-file-multiple">
-                                        <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
-                                        <span class="fw-semibold text-secondary-light">Tải lên</span>
-                                        <input id="upload-file-multiple" type="file" name="anh_dai_dien"  hidden multiple/>
-                                    </label>
-                                        <iconify-icon icon="solar:camera-outline" class="text-xl text-secondary-light"></iconify-icon>
-                                        <span class="fw-semibold text-secondary-light">Tải lên</span>
-                                        <input id="upload-file-multiple" type="file" name="anh_dai_dien"  hidden multiple/>
-                                    </label>
-                                </div><!--End Upload IMG -->
-
-                                {{--<div class="card-body p-24">
-                                    <label for="file-upload-name" class="mb-16 border border-neutral-600 fw-medium text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
-                                        <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
-                                        Click to upload
-                                        <input type="file" class="form-control w-auto mt-24 form-control-lg" id="file-upload-name" multiple hidden>
-                                    </label>
-                                    <ul id="uploaded-img-names" class=""></ul>
-                                </div>--}} {{--Upload file--}}
-                                <div class="mb-20">
-                                  <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tài khoản <span class="text-danger-600">*</span></label>
-                                  <input type="text" class="form-control radius-8" name="tai_khoan" placeholder="Nhập tên tài khoản">
-                              </div>
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Họ tên <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="ho_ten" placeholder="Nhập họ tên">
+                                    <input type="text" class="form-control radius-8" value="{{$user->name}}" name="name" placeholder="Nhập họ tên" required>
                                 </div>
                                 <div class="mb-20">
+                                  <label class="form-label fw-semibold text-primary-light text-sm mb-8">Tài khoản <span class="text-danger-600">*</span></label>
+                                  <input type="text" class="form-control radius-8" value="{{$user->ho_ten}}"name="ho_ten" placeholder="Nhập tên tài khoản" required>
+                              </div>
+                          
+                                <div class="mb-20">
                                   <label class="form-label fw-semibold text-primary-light text-sm mb-8">Email <span class="text-danger-600">*</span></label>
-                                  <input type="text" class="form-control radius-8" name="email" placeholder="Nhập email">
+                                  <input type="text" class="form-control radius-8" value="{{$user->email}}" name="email" placeholder="Nhập email" required>
                               </div>
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Số điện thoại <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="so_dien_thoai" placeholder="Nhập số điện thoại">
+                                    <input type="text" class="form-control radius-8" value="{{$user->so_dien_thoai}}" name="so_dien_thoai" placeholder="Nhập số điện thoại" required>
                                 </div>
+                            
+                           
                                 <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">	giới tính </label>
-                                    <input type="text" class="form-control radius-8" name="	gioi_tinh" placeholder="Nhập giới tính">
-                                </div>
-                                <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Địa chỉ <span class="text-danger-600">*</span></label>
-                                    <input type="text" class="form-control radius-8" name="dia_chi" placeholder="Nhập địa chỉ">
-                                </div>
-                                <div class="mb-20">
-                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ngày sinh <span class="text-danger-600">*</span></label>
-                                    <input type="date" class="form-control radius-8" name="ngay_sinh">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Ngày tạo <span class="text-danger-600">*</span></label>
+                                    <input type="date" class="form-control radius-8" value="{{$user->ngay_sinh}}"name="ngay_sinh" required>
                                 </div>
                                 <div class="mb-20">
                                   <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mật khẩu <span class="text-danger-600">*</span></label>
-                                  <input type="text" class="form-control radius-8" name="mat_khau" placeholder="Nhập mật khẩu">
+                                  <input type="text" class="form-control radius-8" value="{{$user->password}}" name="password" placeholder="Nhập mật khẩu" required>
                               </div>
-                                <div class="mb-20">
-                                    <label for="desig" class="form-label fw-semibold text-primary-light text-sm mb-8">Danh mục sản phẩm <span class="text-danger-600">*</span> </label>
-                                    <select class="form-control radius-8 form-select" name="chuc_vu_id" id="desig">
-                                        <option selected>Vui lòng chọn</option>
-                                        <option value="2">Danh mục 2</option>
-                                        <option value="3">Danh mục 1</option>
-                                    </select>
-                                </div>
+                          
 
                                 <div class="text-center mt-3">
-                                    <a href="{{route('taikhoan.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+                                    <a href="{{route('user.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
-                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Thêm</button>
+                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Sửa</button>
                                 </div>
                             </form>
                         </div>
