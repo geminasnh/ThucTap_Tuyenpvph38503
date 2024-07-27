@@ -21,12 +21,15 @@ class SanPhamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ma_sp' => 'required|max:10|unique:san_phams,ma_sp,' . $this->route('sanpham'),
+            'ma_sp' => 'required|max:10|unique:san_phams,ma_sp,' . $this->route('id'),
             'ten_san_pham' => 'required|max:255',
-            'so_luong' => 'required|numeric|min:1',
-            'gia' => 'required|numeric|min:1|max:99999999',
+            'hinh_anh' => 'image|mimes:jpg,jpeg,png',
+            'so_luong' => 'integer|min:1',
+            'gia' => 'required|numeric|min:0',
+            'gia_khuyen_mai' => 'numeric|min:0|lt:gia',
+            'mo_ta_ngan' => 'string',
             'ngay_nhap' => 'required|date',
-            'danh_muc_id' => 'required'
+            'danh_muc_id' => 'required|exists:danh_mucs,id',
         ];
     }
 
@@ -38,21 +41,33 @@ class SanPhamRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'ma_sp.required' => 'Vui lòng nhập mã sản phẩm.',
-            'ma_sp.max' => 'Mã sản phẩm không được quá 10 ký tự.',
+            'ma_sp.required' => 'Mã sản phẩm là bắt buộc.',
+            'ma_sp.max' => 'Mã sản phẩm không được vượt quá 10 ký tự.',
             'ma_sp.unique' => 'Mã sản phẩm đã tồn tại.',
-            'ten_san_pham.required' => 'Vui lòng nhập tên sản phẩm.',
-            'ten_san_pham.max' => 'Tên sản phẩm không được quá 255 ký tự.',
-            'so_luong.required' => 'Vui lòng nhập số lượng.',
-            'so_luong.numeric' => 'Số lượng phải là một số.',
-            'so_luong.min' => 'Số lượng phải lớn hơn hoặc bằng 1.',
-            'gia.required' => 'Vui lòng nhập giá.',
-            'gia.numeric' => 'Giá phải là một số.',
-            'gia.min' => 'Giá phải lớn hơn hoặc bằng 1.',
-            'gia.max' => 'Giá không được quá 99999999.',
-            'ngay_nhap.required' => 'Vui lòng nhập ngày nhập.',
-            'ngay_nhap.date' => 'Ngày nhập không đúng định dạng.',
-            'danh_muc_id.required' => 'Vui lòng chọn danh mục sản phẩm.'
+
+            'ten_san_pham.required' => 'Tên sản phẩm là bắt buộc.',
+            'ten_san_pham.max' => 'Tên sản phẩm không được vượt quá 255 ký tự.',
+
+            'hinh_anh.image' => 'Hình ảnh phải là một tập tin hình ảnh.',
+            'hinh_anh.mimes' => 'Hình ảnh phải có định dạng jpg, jpeg, hoặc png.',
+
+            'so_luong.integer' => 'Số lượng phải là một số nguyên.',
+            'so_luong.min' => 'Số lượng phải ít nhất là 1.',
+
+            'gia.required' => 'Giá sản phẩm là bắt buộc.',
+            'gia.numeric' => 'Giá sản phẩm phải là một số.',
+            'gia.min' => 'Giá sản phẩm phải là một số dương.',
+
+            'gia_khuyen_mai.numeric' => 'Giá khuyến mãi phải là một số.',
+            'gia_khuyen_mai.min' => 'Giá khuyến mãi phải là một số dương.',
+            'gia_khuyen_mai.lt' => 'Giá khuyến mãi phải nhỏ hơn giá sản phẩm.',
+
+            'mo_ta_ngan.string' => 'Mô tả ngắn phải là một chuỗi ký tự.',
+
+            'ngay_nhap.required' => 'Ngày nhập là bắt buộc.',
+            'ngay_nhap.date' => 'Ngày nhập phải là một ngày hợp lệ.',
+
+            'danh_muc_id.required' => 'Danh mục là bắt buộc.',
         ];
     }
 

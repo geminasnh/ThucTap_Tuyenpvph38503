@@ -16,7 +16,6 @@ class BinhLuanController extends Controller
     public function index()
     {
         $title = "Danh sách bình luận";
-        //dd();
         $dsBinhLuan = $this->binh_luan->getListBinhLuan();
         return view('admins.binhluans.index', compact('title','dsBinhLuan'));
     }
@@ -66,6 +65,8 @@ class BinhLuanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $binhLuan = BinhLuan::query()->findOrFail($id);
+        $binhLuan->delete();
+        return redirect()->route('admins.sanpham.index')->with('thongBao', "Xóa thành công");
     }
 }

@@ -46,7 +46,8 @@
                     <option value="1">Hoa quả</option>
                     <option value="2">Rau</option>
                 </select>
-                <a href="{{route('sanpham.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+                <a href="{{route('admins.sanpham.create')}}" class="btn btn-sm btn-primary-600"><i
+                        class="ri-add-line"></i>
                     Thêm sản phẩm</a>
             </div>
         </div>
@@ -54,13 +55,13 @@
             <table class="table bordered-table mb-0">
                 <thead>
                 <tr>
-                    <th scope="col">Mã</th>
+                    <th scope="col">Mã sản phẩm</th>
                     <th scope="col">Sản phẩm</th>
                     <th scope="col">SL</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Giá Sale</th>
+                    <th scope="col">Giá sản phẩm</th>
+                    <th scope="col">Giá khuyến mãi</th>
                     <th scope="col">Ngày nhập</th>
-                    <th scope="col">Mô tả</th>
+                    <th scope="col">Trạng thái</th>
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
@@ -70,26 +71,35 @@
                         <td>{{$item->ma_sp}}</td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::Url($item->hinh_anh) }}" alt=""
+                                <img src="{{Storage::Url($item->hinh_anh) }}" alt=""
                                      style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
-                                    <h6 class="text-md mb-0 fw-normal">{{$item->ten_san_pham}}</h6>
-                                    <span class="text-sm text-secondary-light fw-normal">{{$item->danh_muc_id}}</span>
+                                    <h6 class="text-md mb-0 fw-normal fw-bold">{{$item->ten_san_pham}}</h6>
+                                    <span class="text-sm text-secondary-light fw-normal">{{$item->danhMuc->ten_danh_muc}}</span>
+                                    {{--<span class="text-sm fw-bolder">SL:</span> {{$item->so_luong}}--}}
                                 </div>
                             </div>
                         </td>
                         <td>{{$item->so_luong}}</td>
-                        <td>{{$item->gia}}</td>
-                        <td>{{$item->gia_khuyen_mai}}</td>
+                        <td>{{number_format($item->gia)}}</td>
+                        <td>{{empty($item->gia_khuyen_mai) ? 0 : number_format($item->gia_khuyen_mai)}}</td>
                         <td>{{$item->ngay_nhap}}</td>
-                        <td>{{$item->mo_ta}}</td>
+                        <td>
+                            <span
+                                class="{{$item->is_type == true ? 'bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm' : 'bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm'}}">
+                            {{$item->is_type == true ? "Hiển thị" : "Ẩn"}}
+                            </span>
+                        </td>
                         <td class="text-nowrap">
-                            <a href="{{route('sanpham.edit',$item->id)}}"
+                            <a href="{{route('admins.sanpham.show',$item->id)}}" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
+                            </a>
+                            <a href="{{route('admins.sanpham.edit',$item->id)}}"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                 <iconify-icon icon="lucide:edit"></iconify-icon>
                             </a>
-                            <form method="POST" action="{{route('sanpham.destroy', $item->id)}}"
-                                  onsubmit="return confirm('Xác nhận xoá?')" class="d-inline">
+                            <form method="POST" action="{{route('admins.sanpham.destroy', $item->id)}}"
+                                  onsubmit="return confirm('Xác nhận xoá?')" class="d-inline-flex">
                                 @csrf
                                 @method('DELETE')
                                 <button

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamRequest;
+use App\Models\BinhLuan;
+use App\Models\DanhMuc;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
@@ -21,7 +23,8 @@ class SanPhamController extends Controller
     public function index()
     {
         $title = "Danh sách sản phẩm";
-        $listProduct = $this->san_pham->getListProduct();
+        /*$listProduct = $this->san_pham->getListProduct();*/
+        $listProduct = SanPham::orderByDesc('is_type')->get();
         return view('admins.sanphams.index', compact('listProduct', 'title'));
     }
 
@@ -31,7 +34,8 @@ class SanPhamController extends Controller
     public function create()
     {
         $title = "Thêm sản phẩm";
-        return view('admins.sanphams.them', compact('title'));
+        $listDanhMuc = DanhMuc::query()->get();
+        return view('admins.sanphams.them', compact('title','listDanhMuc'));
     }
 
     /**
@@ -40,15 +44,40 @@ class SanPhamController extends Controller
     public function store(SanPhamRequest $request)
     {
         if ($request->isMethod('POST')) {
-            $duLieu = $request->except('_token');
+            $params = $request->except('_token');
+
+            //checkbox
+            $params['is_new'] = $request->has('is_new') ? 1 : 0;
+            $params['is_hot'] = $request->has('is_hot') ? 1 : 0;
+            $params['is_home'] = $request->has('is_home') ? 1 : 0;
+
             if ($request->hasFile('hinh_anh')) {
-                $imgPath = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
             } else {
-                $imgPath = null;
+                $params['hinh_anh'] = null;
             }
-            $duLieu['hinh_anh'] = $imgPath;
-            $this->san_pham->addProduct($duLieu);
-            return redirect()->route('sanpham.index')->with('thongbao', "Thêm sản phẩm thành công");
+
+
+            //them san pham
+            $duLieu = SanPham::query()->create($params);
+
+            //id sanpham
+            $duLieuId = $duLieu->id;
+
+            //them album
+            if ($request->hasFile('list_hinh_anh')) {
+                foreach ($request->file('list_hinh_anh') as $img) {
+                    if ($img) {
+                        $path = $img->store('uploads/hinhanhsanpham/id_' . $duLieuId, 'public');
+                        $duLieu->hinhAnhSanPham()->create([
+                            'san_pham_id' => $duLieuId,
+                            'hinh_anh' => $path,
+                        ]);
+                    }
+                }
+            }
+
+            return redirect()->route('admins.sanpham.index')->with('thongbao', "Thêm sản phẩm thành công");
         }
     }
 
@@ -57,7 +86,12 @@ class SanPhamController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "Xem sản phẩm";
+        $listDanhMuc = DanhMuc::query()->get();
+        $chiTietSp = SanPham::findOrFail($id);
+        $listBinhLuan = BinhLuan::with('nguoiDung')->where('san_pham_id', $id)->get();
+
+        return view('admins.sanphams.view',compact('title','chiTietSp','listDanhMuc','listBinhLuan'));
     }
 
     /**
@@ -98,16 +132,25 @@ class SanPhamController extends Controller
      */
     public function destroy(Request $request, string $id)
     {
-        if ($request->isMethod('DELETE')){
-            $sanPham = $this->san_pham->getDetailProduct($id);
-            if ($sanPham) {
-                $this->san_pham->deleteProduct($id);
-                if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)) {
-                    Storage::disk('public')->delete($sanPham->hinh_anh);
-                }
-                return redirect()->route('sanpham.index')->with('thongbao', "Xoas sản phẩm thành công");
-            }
+        $sanPham = SanPham::query()->findOrFail($id);
+
+        $sanPham->binhLuan()->delete();
+
+        if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)){
+            Storage::disk('public')->delete($sanPham->hinh_anh);
         }
+
+        $sanPham->hinhAnhSanPham()->delete();
+
+        $path = 'uploads/hinhanhsanpham/id_' . $id;
+        if (Storage::disk('public')->exists($path)){
+            Storage::disk('public')->deleteDirectory($path);
+        }
+
+        $sanPham->delete();
+
+        return redirect()->route('admins.sanpham.index')->with('thongBao', 'Xóa sản phẩm thành công');
+
     }
 
 

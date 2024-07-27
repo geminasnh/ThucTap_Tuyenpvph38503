@@ -21,7 +21,8 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                            <form action="{{route('admins.danhmuc.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('admins.danhmuc.store')}}" method="POST"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 <h6 class="text-md text-primary-light mb-16">Ảnh danh mục</h6>
                                 <div class="card-body p-24">
@@ -50,13 +51,19 @@
                                 <div class="mb-20">
                                     <label class="form-label fw-semibold text-primary-light text-sm mb-8">Trạng thái
                                         <span class="text-danger-600">*</span></label>
-                                    <div class="form-check checked-primary d-flex align-items-center gap-2">
-                                        <input class="form-check-input" type="radio" name="trang_thai" id="horizontal1" value="1" checked>
-                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="horizontal1"> Hiện </label>
-                                    </div>
-                                    <div class="form-check checked-secondary d-flex align-items-center gap-2">
-                                        <input class="form-check-input" type="radio" name="trang_thai" id="horizontal2" value="0">
-                                        <label class="form-check-label line-height-1 fw-medium text-secondary-light" for="horizontal2"> Ẩn</label>
+                                    <div class="d-flex align-items-center flex-wrap gap-28">
+                                        <div class="form-check checked-primary d-flex align-items-center gap-2">
+                                            <input class="form-check-input" type="radio" name="trang_thai"
+                                                   id="horizontal1" value="1" checked>
+                                            <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                                   for="horizontal1"> Hiện </label>
+                                        </div>
+                                        <div class="form-check checked-secondary d-flex align-items-center gap-2">
+                                            <input class="form-check-input" type="radio" name="trang_thai"
+                                                   id="horizontal2" value="0">
+                                            <label class="form-check-label line-height-1 fw-medium text-secondary-light"
+                                                   for="horizontal2"> Ẩn</label>
+                                        </div>
                                     </div>
                                 </div>
 

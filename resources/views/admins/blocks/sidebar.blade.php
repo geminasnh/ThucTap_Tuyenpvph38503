@@ -42,10 +42,10 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="{{route('sanpham.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
+                    <a href="{{route('admins.sanpham.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh sách</a>
                 </li>
                 <li>
-                    <a href="{{route('sanpham.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Thêm</a>
+                    <a href="{{route('admins.sanpham.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>Thêm</a>
                 </li>
 
             </ul>
@@ -57,7 +57,7 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="table-basic.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                    <a href="{{route('admins.danhmuc.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
                 <li>

@@ -10,13 +10,6 @@ class BinhLuan extends Model
 {
     use HasFactory;
 
-    public function getListBinhLuan()
-    {
-        $listBinhLuan = DB::table('binh_luans')->get();
-        return $listBinhLuan;
-        //dd();
-    }
-
     protected $fillable = [
         'noi_dung',
         'thoi_gian',
@@ -31,7 +24,7 @@ class BinhLuan extends Model
     }
     public function nguoiDung()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

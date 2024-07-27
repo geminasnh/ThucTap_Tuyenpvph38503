@@ -62,10 +62,13 @@
                 @foreach($data as $index => $item)
                     <tr>
                         <td>{{$index+1}}</td>
-                        <td><img src="{{\Illuminate\Support\Facades\Storage::url($item->hinh_anh)}}" alt="" width="100px"></td>
+                        <td><img src="{{\Illuminate\Support\Facades\Storage::url($item->hinh_anh)}}" alt="" width="70px"></td>
                         <td>{{$item->ten_danh_muc}}</td>
-                        <td class="{{$item->trang_thai == true ? 'text-success' : 'text-danger'}}">
+                        <td>
+                            <span class="{{$item->trang_thai == true ? 'bg-success-focus text-success-main px-24 py-4 rounded-pill fw-medium text-sm' : 'bg-danger-focus text-danger-main px-24 py-4 rounded-pill fw-medium text-sm'}}">
                             {{$item->trang_thai == true ? 'Hiển thị' : 'Ẩn'}}</td>
+                            </span>
+
                         <td class="text-nowrap">
                             <a href="{{route('admins.danhmuc.edit',$item->id)}}"
                                class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
