@@ -37,9 +37,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+    
+       
+        $user = User::paginate(5);
+        return view('admins.users.view', compact('user'))->with('i', (request()->input('page',1)-1)*5);
     }
 
     /**

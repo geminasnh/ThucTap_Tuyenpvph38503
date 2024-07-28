@@ -98,6 +98,7 @@
                         <td>{{$pt->password}}</td>
                         <td>
                             <form action="{{route('user.destroy',$pt->id)}}" method="POST">
+                               <a href="{{route('user.show',$pt->id)}}">view</a>
                                 <a href="{{route('user.edit',$pt->id)}}">Sửa</a>
                                 @csrf
                                 @method('DELETE')

@@ -93,6 +93,7 @@
                 <li>
                     <a href="{{route('user.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
+            
             </ul>
         </li>{{--Tai khoan--}}
         <li class="dropdown">
