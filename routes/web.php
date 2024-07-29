@@ -31,9 +31,7 @@ Route::get('/', function () {
 })->name('admin');*/
 
 
-Route::resource('donhang', DonHangController::class);
-Route::resource('binhluan', BinhLuanController::class);
-Route::resource('user', UserController::class);
+
 
 
 //Auth::routes();
@@ -54,8 +52,8 @@ Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group
 
     Route::resource('danhmuc',DanhMucController::class);
     Route::resource('sanpham', SanPhamController::class);
-
-
+    Route::resource('donhang', DonHangController::class);
+    Route::resource('user', UserController::class);
 
 });
 

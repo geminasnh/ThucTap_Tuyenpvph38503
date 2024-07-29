@@ -24,16 +24,19 @@
         <li class="sidebar-menu-group-title">Chức năng</li>
 
         <li class="dropdown">
+
             <a href="javascript:void(0)">
                 <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
                 <span>Đơn hàng</span>
             </a>
+
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="{{route('donhang.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh
+                    <a href="{{route('admins.donhang.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Danh
                         sách</a>
                 </li>
             </ul>
+
         </li>{{--Don hang--}}
         <li class="dropdown">
             <a href="javascript:void(0)">
@@ -66,20 +69,7 @@
                 </li>
             </ul>
         </li>{{--Danh muc--}}
-        <li class="dropdown">
-            <a href="javascript:void(0)">
-                <iconify-icon icon="flowbite:user-edit-outline" class="menu-icon"></iconify-icon>
-                <span>Chức vụ</span>
-            </a>
-            <ul class="sidebar-submenu">
-                <li>
-                    <a href="form.html"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh sách</a>
-                </li>
-                <li>
-                    <a href="form-layout.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
-                </li>
-            </ul>
-        </li>{{--Chuc vu--}}
+
         <li class="dropdown">
             <a href="javascript:void(0)">
                 <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
@@ -87,27 +77,16 @@
             </a>
             <ul class="sidebar-submenu">
                 <li>
-                    <a href="{{route('user.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                    <a href="{{route('admins.user.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
                 <li>
                     <a href="{{route('user.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
-            
+
             </ul>
         </li>{{--Tai khoan--}}
-        <li class="dropdown">
-            <a href="javascript:void(0)">
-                <iconify-icon icon="codicon:feedback" class="menu-icon"></iconify-icon>
-                <span>Bình luận</span>
-            </a>
-            <ul class="sidebar-submenu">
-                <li>
-                    <a href="{{route('binhluan.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
-                        sách</a>
-                </li>
-            </ul>
-        </li>{{--Binh luan--}}
+
 
     </ul>
 </div>

@@ -46,7 +46,7 @@
                     <option value="1">Hoa quả</option>
                     <option value="2">Rau</option>
                 </select>
-                <a href="{{route('sanpham.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+                <a href="{{route('admins.sanpham.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
                     Thêm sản phẩm</a>
             </div>
         </div>

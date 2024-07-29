@@ -17,9 +17,9 @@
 </div>
 
   <div class="row gy-4">
-      <div class="col-lg-4">
+      <div class="col-lg-12">
           <div class="user-grid-card position-relative border radius-16 overflow-hidden bg-base h-100">
-            
+
               <div class="pb-24 ms-16 mb-24 me-16  mt--100">
                 @foreach($user as $index => $pt)
                   <div class="text-center border border-top-0 border-start-0 border-end-0">
@@ -50,16 +50,16 @@
                               <span class="w-30 text-md fw-semibold text-primary-light"> Ngày tạo</span>
                               <span class="w-70 text-secondary-light fw-medium">: {{$pt->ngay_sinh}}</span>
                           </li>
-                       
-                       
-                   
+
+
+
                       </ul>
                   </div>
                   @endforeach
               </div>
           </div>
       </div>
-    
+
   </div>
 </div>
 @endsection
