@@ -11,8 +11,11 @@ class ProductController extends Controller
     public function detailProduct(string $id)
     {
         $sanPham = SanPham::with('danhMuc')->findOrFail($id);
-        $listSanPham = SanPham::with('danhMuc')->get();
+        $danhMucId = $sanPham->danhMuc->id;
+        $listSanPham = SanPham::with('danhMuc')->where('danh_muc_id',$danhMucId)->where('id','!=',$id)->paginate(4);
+        $listBinhLuan = $sanPham->binhLuan;
+        $tongBinhLuan = $listBinhLuan->count();
 
-        return view('clients.sanphams.detail-product',compact('sanPham','listSanPham'));
+        return view('clients.sanphams.detail-product',compact('sanPham','listSanPham','listBinhLuan','tongBinhLuan'));
     }
 }

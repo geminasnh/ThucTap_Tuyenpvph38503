@@ -20,7 +20,7 @@ class BinhLuan extends Model
 
     public function sanPham()
     {
-        return $this->belongsTo(SanPham::class);
+        return $this->belongsTo(SanPham::class,'san_pham_id');
     }
     public function nguoiDung()
     {

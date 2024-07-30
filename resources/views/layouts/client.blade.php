@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
 
-    <!-- Nhúng Bootstrap -->
-    <link rel="stylesheet" href="{{ asset('assets/clients/css/bootstrap.min.css')}}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-...your-integrity-hash-here..." crossorigin="anonymous">
 
     <!--css-->
     <link rel="stylesheet" href="{{ asset('assets/clients/css/style.css')}}">
@@ -26,7 +26,9 @@
 
 </body>
 @yield('js')
-<script src="{{ asset('assets/clients/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-...your-integrity-hash-here..." crossorigin="anonymous"></script>
+
 
 <!-- Nhúng Font Icon -->
 <script src="{{ asset('assets/clients/js/font-fontawesome-ae333ffef2.js')}}"></script>
