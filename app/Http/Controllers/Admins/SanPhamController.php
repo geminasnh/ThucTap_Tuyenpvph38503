@@ -210,6 +210,13 @@ class SanPhamController extends Controller
                 }
             }
 
+            // Check total images
+            $currentImageCount = $sanPham->hinhAnhSanPham()->count();
+            $newImageCount = count($request->file('list_hinh_anh') ?? []);
+            if ($currentImageCount + $newImageCount > 4) {
+                return redirect()->back()->with('error', "Không được thêm quá 4 ảnh sản phẩm");
+            }
+
             // Add or update images
             foreach ($request->list_hinh_anh as $key => $image) {
                 $imageId = str_replace('id_', '', $key);

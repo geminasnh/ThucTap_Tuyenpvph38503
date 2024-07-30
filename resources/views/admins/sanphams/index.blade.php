@@ -16,11 +16,13 @@
         </ul>
     </div>{{--end title--}}
 
-    <script>
+
         @if(session('thongbao'))
+            <script>
             alert('{{ session('thongbao') }}');
+            </script>
         @endif
-    </script>
+
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">

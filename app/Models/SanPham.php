@@ -64,7 +64,7 @@ class SanPham extends Model
 
     public function danhMuc()
     {
-        return $this->belongsTo(DanhMuc::class);
+        return $this->belongsTo(DanhMuc::class, 'danh_muc_id');
     }
 
     public function hinhAnhSanPham()
@@ -74,6 +74,6 @@ class SanPham extends Model
 
     public function binhLuan()
     {
-        return $this->hasMany(BinhLuan::class);
+        return $this->hasMany(BinhLuan::class,'san_pham_id');
     }
 }

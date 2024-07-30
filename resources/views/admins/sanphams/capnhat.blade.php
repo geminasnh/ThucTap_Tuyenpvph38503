@@ -21,6 +21,7 @@
                 <div class="col-xxl-10 col-xl-11 col-lg-12">
 
                     <div class="card-body">
+
                         <form action="{{route('admins.sanpham.update', $chiTietSp->id)}}" method="POST"
                               enctype="multipart/form-data"
                               class="row justify-content-center">
@@ -58,7 +59,7 @@
                                                 <td class="d-flex align-items-center justify-content-around me-12 my-6">
                                                     <img id="preview_{{ $index }}"
                                                          src="{{ Storage::url($img->hinh_anh) }}" alt=""
-                                                         style="width: 45px;">
+                                                         style="width: 50px; height: 50px">
                                                     <input type="file" id="hinh_anh"
                                                            name="list_hinh_anh[id_{{ $img->id }}]"
                                                            class="form-control ms-20"
@@ -267,10 +268,15 @@
             </div>
         </div>
     </div>
-
+    @if(session('error'))
+        <script>
+            alert('{{ session('error') }}');
+        </script>
+    @endif
 @endsection
 
 @section('js')
+
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
