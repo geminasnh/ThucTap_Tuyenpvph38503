@@ -16,11 +16,11 @@
         </ul>
     </div>{{--end title--}}
 
-    
+
         @if(session('thongbao'))
         alert('{{ session('thongbao') }}');
         @endif
-  
+
 
     <div class="card">
         <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-3">
@@ -46,11 +46,11 @@
                     <option value="1">Hoa quả</option>
                     <option value="2">Rau</option>
                 </select>
-                <a href="{{route('user.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
+                <a href="{{route('admins.user.create')}}" class="btn btn-sm btn-primary-600"><i class="ri-add-line"></i>
                     Thêm tài khoản</a>
             </div>
         </div>
-     
+
         <div class="card-body" >
             <style>
 
@@ -63,15 +63,15 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Họ Tên</th>
-                
+
                     <th scope="col">Tài khoản</th>
-                
+
                     <th scope="col" >Email</th>
                     <th scope="col">Số điện thoại</th>
-                  
+
                     <th scope="col">Ngày taọ</th>
                     <th scope="col">Mật khẩu</th>
-                 
+
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
@@ -89,17 +89,17 @@
                         </td>
                         <td>{{$pt->name}}</td>
                         <td>{{$pt->ho_ten}}</td>
-                        
+
                         <td>{{$pt->email}}</td>
                         <td>{{$pt->so_dien_thoai}}</td>
-                       
-                       
+
+
                         <td>{{$pt->ngay_sinh}}</td>
                         <td>{{$pt->password}}</td>
                         <td>
-                            <form action="{{route('user.destroy',$pt->id)}}" method="POST">
-                               <a href="{{route('user.show',$pt->id)}}">view</a>
-                                <a href="{{route('user.edit',$pt->id)}}">Sửa</a>
+                            <form action="{{route('admins.user.destroy',$pt->id)}}" method="POST">
+                               <a href="{{route('admins.user.show',$pt->id)}}">view</a>
+                                <a href="{{route('admins.user.edit',$pt->id)}}">Sửa</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa</button>

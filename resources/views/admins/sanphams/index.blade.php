@@ -18,7 +18,7 @@
 
     <script>
         @if(session('thongbao'))
-        alert('{{ session('thongbao') }}');
+            alert('{{ session('thongbao') }}');
         @endif
     </script>
 
@@ -55,11 +55,12 @@
             <table class="table bordered-table mb-0">
                 <thead>
                 <tr>
+                    <th style="width: 5px">ID</th>
                     <th scope="col">Mã sản phẩm</th>
-                    <th scope="col">Sản phẩm</th>
-                    <th scope="col">SL</th>
-                    <th scope="col">Giá sản phẩm</th>
-                    <th scope="col">Giá khuyến mãi</th>
+                    <th scope="col" style="width: 250px">Sản phẩm</th>
+
+                    <th scope="col">Giá (VNĐ)</th>
+
                     <th scope="col">Ngày nhập</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Thao tác</th>
@@ -68,21 +69,25 @@
                 <tbody>
                 @foreach($listProduct as $index => $item)
                     <tr>
+                        <td>{{$item->id}}</td>
                         <td>{{$item->ma_sp}}</td>
-                        <td>
+                        <td >
                             <div class="d-flex align-items-center">
                                 <img src="{{Storage::Url($item->hinh_anh) }}" alt=""
                                      style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
                                     <h6 class="text-md mb-0 fw-normal fw-bold">{{$item->ten_san_pham}}</h6>
                                     <span class="text-sm text-secondary-light fw-normal">{{$item->danhMuc->ten_danh_muc}}</span>
-                                    {{--<span class="text-sm fw-bolder">SL:</span> {{$item->so_luong}}--}}
+                                    <p class="text-sm fw-bolder">SL: {{$item->so_luong}}</p>
                                 </div>
                             </div>
                         </td>
-                        <td>{{$item->so_luong}}</td>
-                        <td>{{number_format($item->gia)}}</td>
-                        <td>{{empty($item->gia_khuyen_mai) ? 0 : number_format($item->gia_khuyen_mai)}}</td>
+
+                        <td>
+                         <span class="fw-bolder">{{number_format($item->gia)}}</span>
+                        <p>Sale: {{empty(number_format($item->gia_khuyen_mai)) ? 0 : number_format($item->gia_khuyen_mai)}}</p>
+                        </td>
+                        {{--<td>{{empty($item->gia_khuyen_mai) ? 0 : number_format($item->gia_khuyen_mai)}}</td>--}}
                         <td>{{$item->ngay_nhap}}</td>
                         <td>
                             <span

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamRequest;
 use App\Models\BinhLuan;
 use App\Models\DanhMuc;
+use App\Models\HinhAnhSanPham;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
@@ -35,7 +36,7 @@ class SanPhamController extends Controller
     {
         $title = "Thêm sản phẩm";
         $listDanhMuc = DanhMuc::query()->get();
-        return view('admins.sanphams.them', compact('title','listDanhMuc'));
+        return view('admins.sanphams.them', compact('title', 'listDanhMuc'));
     }
 
     /**
@@ -56,7 +57,6 @@ class SanPhamController extends Controller
             } else {
                 $params['hinh_anh'] = null;
             }
-
 
             //them san pham
             $duLieu = SanPham::query()->create($params);
@@ -91,7 +91,7 @@ class SanPhamController extends Controller
         $chiTietSp = SanPham::findOrFail($id);
         $listBinhLuan = BinhLuan::with('nguoiDung')->where('san_pham_id', $id)->get();
 
-        return view('admins.sanphams.view',compact('title','chiTietSp','listDanhMuc','listBinhLuan'));
+        return view('admins.sanphams.view', compact('title', 'chiTietSp', 'listDanhMuc', 'listBinhLuan'));
     }
 
     /**
@@ -100,56 +100,166 @@ class SanPhamController extends Controller
     public function edit(string $id)
     {
         $title = "Sửa sản phẩm";
-        $chiTietSp = $this->san_pham->getDetailProduct($id);
-        return view('admins.sanphams.capnhat',compact('title','chiTietSp'));
+        $listDanhMuc = DanhMuc::query()->get();
+        $chiTietSp = SanPham::findOrFail($id);
+        return view('admins.sanphams.capnhat', compact('title', 'chiTietSp', 'listDanhMuc'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    /*public function update(Request $request, string $id)
     {
         if ($request->isMethod('PUT')) {
-            //dd($request->all());
             $params = $request->except('_token', '_method');
 
-            $sanPham = SanPham::findOrFail($id);
+            //checkbox
+            $params['is_new'] = $request->has('is_new') ? 1 : 0;
+            $params['is_hot'] = $request->has('is_hot') ? 1 : 0;
+            $params['is_home'] = $request->has('is_home') ? 1 : 0;
+
+            $sanPham = SanPham::query()->findOrFail($id);
+
+            //anh dai dien
             if ($request->hasFile('hinh_anh')) {
-                Storage::disk('public')->delete($sanPham->hinh_anh);
+                if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)) {
+                    Storage::disk('public')->delete($sanPham->hinh_anh);
+                }
                 $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
-            }else{
+            } else {
                 $params['hinh_anh'] = $sanPham->hinh_anh;
             }
 
-            $this->san_pham->updateProduct($id, $params);
-            return redirect()->route('sanpham.index')->with('thongbao', "Sửa sản phẩm thành công");
-        }
+            //album ảnh
+            $anhCu = $sanPham->hinhAnhSanPham()->pluck('id')->toArray();
+            $arrayCombine = array_combine($anhCu, $anhCu);
 
+            //xu ly xoa khi cap nhat xoa anh
+            foreach ($arrayCombine as $key) {
+                if (!array_key_exists($key, $request->list_hinh_anh)) {
+                    $hinhAnhSanPham = HinhAnhSanPham::query()->find($key);
+                    if ($hinhAnhSanPham && Storage::disk('public')->exists($hinhAnhSanPham->hinh_anh)) {
+                        Storage::disk('public')->delete($hinhAnhSanPham->hinh_anh);
+                        $hinhAnhSanPham->delete();
+                    }
+                }
+            }
+
+            //xu ly khi them hoac sua
+            foreach ($request->list_hinh_anh as $key => $image) {
+                if (!array_key_exists($key, $arrayCombine)) {
+                    if ($request->hasFile("list_hinh_anh.$key")) {
+                        //xu ly them hinh anh
+                        $path = $image->store('uploads/hinhanhsanpham/id_' . $id, 'public');
+                        $sanPham->hinhAnhSanPham()->create([
+                            'san_pham_id' => $id,
+                            'hinh_anh' => $path,
+                        ]);
+                    }
+                } else if (is_file($image) && $request->hasFile("list_hinh_anh.$key")) {
+                    //xu ly update hinh anh
+                    $hinhAnhSanPham = HinhAnhSanPham::query()->find($key);
+                    if ($hinhAnhSanPham && Storage::disk('public')->exists($hinhAnhSanPham->hinh_anh)) {
+                        Storage::disk('public')->delete($hinhAnhSanPham->hinh_anh);
+                    }
+                    $path = $image->store('uploads/hinhanhsanpham/id_' . $id, 'public');
+                    $hinhAnhSanPham->update([
+                        'hinh_anh' => $path,
+                    ]);
+                }
+            }
+            $sanPham->update($params);
+            return redirect()->route('admins.sanpham.index')->with('thongbao', "Cập nhật sản phẩm thành công");
+        }
+    }*/
+
+    public function update(Request $request, string $id)
+    {
+        if ($request->isMethod('PUT')) {
+            $params = $request->except('_token', '_method');
+
+            // Checkbox values
+            $params['is_new'] = $request->has('is_new') ? 1 : 0;
+            $params['is_hot'] = $request->has('is_hot') ? 1 : 0;
+            $params['is_home'] = $request->has('is_home') ? 1 : 0;
+
+            $sanPham = SanPham::query()->findOrFail($id);
+
+            // avatar image
+            if ($request->hasFile('hinh_anh')) {
+                if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)) {
+                    Storage::disk('public')->delete($sanPham->hinh_anh);
+                }
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
+            } else {
+                $params['hinh_anh'] = $sanPham->hinh_anh;
+            }
+
+            // album images
+            $existingImages = $sanPham->hinhAnhSanPham->pluck('id')->toArray();
+            $existingImagesMap = array_combine($existingImages, $existingImages);
+
+            // Delete images
+            foreach ($existingImagesMap as $existingImageId) {
+                if (!isset($request->list_hinh_anh['id_' . $existingImageId])) {
+                    $image = HinhAnhSanPham::find($existingImageId);
+                    if ($image && Storage::disk('public')->exists($image->hinh_anh)) {
+                        Storage::disk('public')->delete($image->hinh_anh);
+                        $image->delete();
+                    }
+                }
+            }
+
+            // Add or update images
+            foreach ($request->list_hinh_anh as $key => $image) {
+                $imageId = str_replace('id_', '', $key);
+                if (!in_array($imageId, $existingImages)) {
+                    if ($request->hasFile("list_hinh_anh.$key")) {
+                        $path = $image->store('uploads/hinhanhsanpham/id_' . $id, 'public');
+                        $sanPham->hinhAnhSanPham()->create([
+                            'san_pham_id' => $id,
+                            'hinh_anh' => $path,
+                        ]);
+                    }
+                } else if (is_file($image) && $request->hasFile("list_hinh_anh.$key")) {
+                    $existingImage = HinhAnhSanPham::find($imageId);
+                    if ($existingImage && Storage::disk('public')->exists($existingImage->hinh_anh)) {
+                        Storage::disk('public')->delete($existingImage->hinh_anh);
+                    }
+                    $path = $image->store('uploads/hinhanhsanpham/id_' . $id, 'public');
+                    $existingImage->update([
+                        'hinh_anh' => $path,
+                    ]);
+                }
+            }
+
+            $sanPham->update($params);
+            return redirect()->route('admins.sanpham.index')->with('thongbao', "Cập nhật sản phẩm thành công");
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, string $id)
+    public function destroy(string $id)
     {
         $sanPham = SanPham::query()->findOrFail($id);
 
-        $sanPham->binhLuan()->delete();
-
-        if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)){
+        if ($sanPham->hinh_anh && Storage::disk('public')->exists($sanPham->hinh_anh)) {
             Storage::disk('public')->delete($sanPham->hinh_anh);
         }
 
+        $sanPham->binhLuan()->delete();
         $sanPham->hinhAnhSanPham()->delete();
 
         $path = 'uploads/hinhanhsanpham/id_' . $id;
-        if (Storage::disk('public')->exists($path)){
+        if (Storage::disk('public')->exists($path)) {
             Storage::disk('public')->deleteDirectory($path);
         }
 
         $sanPham->delete();
-
-        return redirect()->route('admins.sanpham.index')->with('thongBao', 'Xóa sản phẩm thành công');
+        return redirect()->route('admins.sanpham.index')->with('thongbao', "Xóa sản phẩm thành công");
 
     }
 

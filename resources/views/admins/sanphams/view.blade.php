@@ -18,25 +18,18 @@
     <div class="card h-100 p-0 radius-12">
         <div class="card-body p-24">
             <div class="row justify-content-center">
-                <div class="col-xxl-11 col-xl-12 col-lg-12">
+                <div class="col-xxl-10 col-xl-11 col-lg-12">
 
                         <div class="card-body">
-                            <form action="{{route('admins.sanpham.store')}}" method="POST" enctype="multipart/form-data"
+                            <form action="#" method="POST" enctype="multipart/form-data"
                                   class="row justify-content-center">
                                 @csrf
                                 <div class="col-xxl-5 col-xl-5 col-lg-5">
                                     <div class="mt-5">
-                                        <h6 class="text-md text-primary-light mb-16">Ảnh sản phẩm</h6>
+                                        <h6 class="text-md text-primary-light">Ảnh sản phẩm</h6>
 
-                                        <div class="card-body p-24">
-                                            <label for="file-upload" class="mb-16 border border-neutral-600 fw-medium
-                                    text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
-                                                <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
-                                                Tải ảnh lên
-                                                <input type="file" class="form-control w-auto mt-24 form-control-lg"
-                                                       id="file-upload"
-                                                       name="hinh_anh" onchange="showImg(event)" hidden disabled>
-                                            </label>
+                                        <div class="card-body">
+
                                             <img src="{{ Storage::url($chiTietSp->hinh_anh) }}" id="uploaded-img"
                                                  style="width: 100px">
                                         </div>
@@ -44,20 +37,14 @@
 
                                     <div class="my-3">
                                         <h6 class="text-md text-primary-light mb-16">Album ảnh</h6>
-                                        <iconify-icon id="add-row" icon="ic:baseline-plus"
-                                                      style="cursor: pointer"></iconify-icon>
-                                        <table class="table align-middle table-nowrap mb-0">
-                                            <tbody id="img-table">
+                                        <table class="">
+                                            <tbody id="img-table"  class="d-flex justify-content-center align-items-center">
                                             @foreach($chiTietSp->hinhAnhSanPham as $index => $img)
-                                                <tr>
-                                                    <td class="d-flex">
+                                                <tr  class="me-4">
+                                                    <td>
                                                         <img id="preview_{{ $index }}"
                                                              src="{{ Storage::url($img->hinh_anh) }}" alt=""
-                                                             style="width: 45px;" class="mb-3">
-                                                        <input type="file" id="hinh_anh"
-                                                               name="list_hinh_anh[id_{{ $index }}]"
-                                                               class="form-control"
-                                                               onchange="previewImg(this, {{ $index }})" disabled>
+                                                             style="width: 45px;">
                                                     </td>
                                                 </tr>
                                             @endforeach

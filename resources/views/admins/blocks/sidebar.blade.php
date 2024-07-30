@@ -81,7 +81,7 @@
                         sách</a>
                 </li>
                 <li>
-                    <a href="{{route('user.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
+                    <a href="{{route('admins.user.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
                 </li>
 
             </ul>

@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.9;
+}
+.hover-shadow:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.hover-color:hover{
+    color: #7faf51;
+}
+
+/*.carousel-control-prev .carousel-control-prev-icon .carousel-control-next .carousel-control-next-icon {*/
+/*    color: #7faf51;*/
+/*}*/

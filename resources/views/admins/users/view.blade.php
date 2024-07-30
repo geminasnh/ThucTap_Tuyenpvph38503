@@ -50,6 +50,18 @@
                               <span class="w-30 text-md fw-semibold text-primary-light"> Ngày tạo</span>
                               <span class="w-70 text-secondary-light fw-medium">: {{$pt->ngay_sinh}}</span>
                           </li>
+                          <li class="d-flex align-items-center gap-1 mb-12">
+                            <span class="w-30 text-md fw-semibold text-primary-light"> Địa chỉ</span>
+                            <span class="w-70 text-secondary-light fw-medium">: {{$pt->dia_chi}}</span>
+                        </li>
+                        <li class="d-flex align-items-center gap-1 mb-12">
+                          <span class="w-30 text-md fw-semibold text-primary-light"> Giới tính</span>
+                          <span class="w-70 text-secondary-light fw-medium">: {{$pt->gioi_tinh}}</span>
+                      </li>
+                      <li class="d-flex align-items-center gap-1 mb-12">
+                        <span class="w-30 text-md fw-semibold text-primary-light"> Trạng thái</span>
+                        <span class="w-70 text-secondary-light fw-medium">: {{$pt->trang_thai}}</span>
+                    </li>
 
 
 

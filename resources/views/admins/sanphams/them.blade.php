@@ -19,53 +19,51 @@
         <div class="card-body p-24">
             <div class="row justify-content-center">
                 <div class="col-xxl-10 col-xl-11 col-lg-12">
-                    <div class="card border">
+
                         <div class="card-body">
                             <form action="{{route('admins.sanpham.store')}}" method="POST" enctype="multipart/form-data"
                                   class="row justify-content-center">
                                 @csrf
 
-
                                 <div class="col-xxl-5 col-xl-5 col-lg-5">
                                     <div class="mt-5">
-                                    <h6 class="text-md text-primary-light mb-16">Ảnh sản phẩm</h6>
+                                        <h6 class="text-md text-primary-light">Ảnh sản phẩm</h6>
 
-                                    <div class="card-body p-24">
-                                        <label for="file-upload" class="mb-16 border border-neutral-600 fw-medium
-                                    text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
-                                            <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
-                                            Tải ảnh lên
-                                            <input type="file" class="form-control w-auto mt-24 form-control-lg"
-                                                   id="file-upload"
-                                                   name="hinh_anh" onchange="showImg(event)" hidden>
-                                        </label>
-                                        <img src="" id="uploaded-img" style="display: none; width: 100px">
+                                        <div class="card-body">
+                                            <label for="file-upload" class="mb-28 me-10 border border-neutral-600 fw-medium
+                                                 text-secondary-light px-16 py-12 radius-12 d-inline-flex align-items-center gap-2 bg-hover-neutral-200">
+                                                <iconify-icon icon="solar:upload-linear" class="text-xl"></iconify-icon>
+                                                Tải ảnh lên
+                                                <input type="file" class="form-control w-auto mt-24 form-control-lg"
+                                                       id="file-upload"
+                                                       name="hinh_anh" onchange="showImg(event)" hidden>
+                                            </label>
+                                            <img class="d-inline" src="" id="uploaded-img" style="display: none; width: 100px">
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="my-3">
+                                        <div class="d-flex">
+                                            <h6 class="text-md text-primary-light mb-10 me-4">Album ảnh: </h6>
+                                            <iconify-icon id="add-row" icon="ic:baseline-plus" class="fs-5 ms-2"
+                                                          style="cursor: pointer"></iconify-icon>
+                                        </div>
+                                        <table class=" align-middle table-nowrap mb-0">
+                                            <tbody id="img-table">
+                                            <tr>
+                                                <td class="d-flex align-items-center justify-content-around me-12 my-6">
+                                                    <img id="preview_0" src="" alt="" style="width: 45px;">
+                                                    <input type="file" id="hinh_anh" name="list_hinh_anh[id_0]"
+                                                           class="form-control ms-20" onchange="previewImg(this, 0)">
+                                                </td>
+                                                <td class="pt-16">
+                                                    <iconify-icon icon="ion:trash-bin-outline" width="30" height="30"
+                                                                  style="cursor: pointer"></iconify-icon>
+                                                </td>
+                                            </tr>
 
-
-
-                                <div class="my-3">
-                                    <h6 class="text-md text-primary-light mb-16">Album ảnh</h6>
-                                    <iconify-icon id="add-row" icon="ic:baseline-plus"
-                                                  style="cursor: pointer"></iconify-icon>
-                                    <table class="table align-middle table-nowrap mb-0">
-                                        <tbody id="img-table">
-                                        <tr>
-                                            <td class="d-flex">
-                                                <img id="preview_0" src="" alt="" style="width: 45px;" class="mb-3">
-                                                <input type="file" id="hinh_anh" name="list_hinh_anh[id_0]"
-                                                       class="form-control" onchange="previewImg(this, 0)">
-                                            </td>
-                                            <td class="">
-                                                <i class="text-muted fs-18 rounded-2 border p-1"
-                                                   style="cursor: pointer">X</i>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                     <div class="mb-20">
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mã sản
                                             phẩm
@@ -92,8 +90,7 @@
                                     </div>
                                     <div class="mb-20">
                                         <label class="form-label fw-semibold text-primary-light text-sm mb-8">Số lượng
-                                            <span
-                                                class="text-danger-600">*</span></label>
+                                            <span class="text-danger-600">*</span></label>
                                         <input type="text"
                                                class="form-control radius-8 @error('so_luong') is-invalid @enderror"
                                                name="so_luong"
@@ -207,21 +204,19 @@
                                                    for="horizontal4">Home</label>
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div class="col-xxl-7 col-xl-7 col-lg-7">
 
-                                    <div>
-                                        <label class="form-label fw-semibold text-primary-light text-sm mb-8">Nội
-                                            Dung</label>
-                                        <div id="editor" style="height: 1200px">
-
+                                    <div class="card border mt-32">
+                                        <div class="card-header">
+                                            <h5 class="mb-0">Nội dung chi tiết</h5>
                                         </div>
-                                        <textarea name="noi_dung" id="noi_dung_content"
-                                                  class="d-none">
-                                    </textarea>
+                                        <div class="card-body">
+                                        <div id="editor" style="height: 1200px"></div>
+                                        <textarea name="noi_dung" id="noi_dung_content" class="d-none">
+                                        </textarea>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -234,12 +229,11 @@
                                     </button>
                                 </div>
 
-
                             </form>
                         </div>
 
 
-                    </div>
+
 
                 </div>
 
@@ -299,15 +293,13 @@
                 var newRow = document.createElement('tr');
 
                 newRow.innerHTML = `
-
-                    <td class="d-flex">
-                        <img id="preview_${rowCount}" src="" alt="" style="width: 45px;" class="mb-3">
+                    <td class="d-flex align-items-center justify-content-around me-12 my-6">
+                        <img id="preview_${rowCount}" src="" alt="" style="width: 45px;">
                         <input type="file" id="hinh_anh" name="list_hinh_anh[id_${rowCount}]"
-                               class="form-control" onchange="previewImg(this, ${rowCount})">
+                               class="form-control ms-20" onchange="previewImg(this, ${rowCount})">
                     </td>
-                    <td class="">
-                        <i class="text-muted fs-18 rounded-2 border p-1"
-                            style="cursor: pointer" onclick="removeRow(this)">X</i>
+                    <td class="pt-16">
+                        <iconify-icon icon="ion:trash-bin-outline" width="30" height="30" style="cursor: pointer" onclick="removeRow(this)"></iconify-icon>
                     </td>
                 `;
 
@@ -317,11 +309,11 @@
         });
 
         function previewImg(input, rowindex) {
-            if (input.files && input.files[0]){
+            if (input.files && input.files[0]) {
                 const reader = new FileReader();
 
                 reader.onload = function (e) {
-                    document.getElementById(`preview_${rowindex}`).setAttribute('src',e.target.result)
+                    document.getElementById(`preview_${rowindex}`).setAttribute('src', e.target.result)
                 }
 
                 reader.readAsDataURL(input.files[0])

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admins\DanhMucController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Middleware\CheckRoleAdminMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,7 @@ Route::get('register', [AuthController::class, 'showRegister']);
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
+Route::get('/product/detail/{id}', [ProductController::class, 'detailProduct'])->name('product.detail');
 
 Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
 
