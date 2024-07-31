@@ -21,7 +21,7 @@
                 <div class="col-xxl-6 col-xl-8 col-lg-10">
                     <div class="card border">
                         <div class="card-body">
-                             <form action="{{route('user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
+                             <form action="{{route('admins.user.update',$user->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-20">
@@ -54,7 +54,7 @@
                           
 
                                 <div class="text-center mt-3">
-                                    <a href="{{route('user.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+                                    <a href="{{route('admins.user.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
                                     <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Sửa</button>
                                 </div>

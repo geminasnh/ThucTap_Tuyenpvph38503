@@ -31,7 +31,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('user.index')->with('thongbao','Thêm tài khoản thành công');
+        return redirect()->route('admins.user.index')->with('thongbao','Thêm tài khoản thành công');
     }
 
     /**
@@ -59,7 +59,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        return redirect()->route('user.index')->with('thongbao','Sửa tài khoản thành công');
+        return redirect()->route('admins.user.index')->with('thongbao','Sửa tài khoản thành công');
     }
 
     /**
@@ -68,6 +68,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index')->with('thongbao','Xóa tài khoản thành công');
+        return redirect()->route('admins.user.index')->with('thongbao','Xóa tài khoản thành công');
     }
 }

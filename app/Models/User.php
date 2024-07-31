@@ -33,6 +33,17 @@ class User extends Authenticatable
 'ngay_sinh'
 
     ];
+
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            if (is_null($user->role)) {
+                $user->role = self::ROLE_ADMIN; 
+            }
+        });
+    }
+
+    
     public function taiKhoan()
     {
         return $this->hasOne(TaiKhoan::class);
