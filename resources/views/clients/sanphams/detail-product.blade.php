@@ -2,6 +2,8 @@
 
 @section('css')
 
+
+
 @endsection
 @section('content')
     <div style="min-height: calc(100vh - 488px);">
@@ -101,18 +103,31 @@
                                 </div>
                             </div>
 
-                            <div class="input-group input-group-sm my-3 ">
-                                <span class="input-group-text" id="inputGroup-sizing-sm"> Số lượng</span>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                       aria-describedby="inputGroup-sizing-sm">
-                            </div>
+                            <form action="{{route('cart.add')}}" method="POST">
+                                @csrf
+                                <div class="input-group input-group-sm my-3 ">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Số lượng</span>
+
+                                    <span class="giam qtybtn btn btn-outline-secondary">-</span>
+                                    <input type="number" name="quantity" class="form-control text-center"
+                                           id="quantityInput" value="1"
+                                           aria-label="Quantity" aria-describedby="inputGroup-sizing-sm">
+                                    <span class="tang qtybtn btn btn-outline-secondary">+</span>
+
+                                    <input type="hidden" name="product_id" value="{{$sanPham->id}}">
+                                </div>
 
 
-                            <div class="text-center mt-3 border-top pt-2">
-                                <button class="btn btn-success w-100 rounded-pill">Thêm vào giỏ hàng</button>
-                                <br>
-                                <button class="btn btn-primary my-2 w-100 rounded-pill">Mua ngay</button>
-                            </div>
+                                <div class="text-center mt-3 border-top pt-2">
+                                    <button type="submit" class="btn btn-success w-100 rounded-pill">Thêm vào giỏ hàng
+                                    </button>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary my-2 w-100 rounded-pill">Mua ngay
+                                    </button>
+                                </div>
+
+                            </form>
+
                             <div class="fs-5 my-2 d-flex justify-content-center">
                                 <i class="fa-solid fa-share-from-square me-3"></i>
                                 <i class="fa-brands fa-facebook me-3"></i>
@@ -210,7 +225,8 @@
                         <div class="col-md-3 mb-4">
                             <div class="card">
                                 <!-- IMG -->
-                                <a class="px-5 py-5" href="{{ route('product.detail', ['id' => $sp->id]) }}" style="height: 300px">
+                                <a class="px-5 py-5" href="{{ route('product.detail', ['id' => $sp->id]) }}"
+                                   style="height: 300px">
                                     <img src="{{Storage::url($sp->hinh_anh) }}"
                                          class="card-img mw-100 mh-100" alt="{{ $sp->ten_san_pham }}">
                                 </a>
@@ -223,14 +239,20 @@
                                         <span>Giá: {{ number_format($sp->gia_khuyen_mai) ? number_format($sp->gia_khuyen_mai) : number_format($sp->gia) }} vnđ</span>
                                     </ins>
                                     @if($sp->gia_khuyen_mai)
-                                        <p class="text-decoration-line-through">Giá gốc: {{ number_format($sp->gia) }} vnđ</p>
+                                        <p class="text-decoration-line-through">Giá gốc: {{ number_format($sp->gia) }}
+                                            vnđ</p>
                                     @endif
                                 </div>
-                                <div class="card-footer text-center d-flex justify-content-between">
-                                    <a class="btn btn-success"><i class="fa-solid fa-cart-shopping"></i> Thêm giỏ
-                                        hàng</a>
-                                    <a class="btn btn-primary">Mua ngay <i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
+                                <form method="POST" action="{{route('cart.add')}}">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <input type="hidden" name="product_id" value="{{ $sp->id }}">
+                                    <div class="card-footer text-center">
+                                        <button type="submit" class="btn btn-success rounded-5"><i class="fa-solid fa-cart-shopping"></i> Thêm
+                                            giỏ
+                                            hàng</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     @endforeach
@@ -246,7 +268,35 @@
     </div>
 @endsection
 @section('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
 
+            $('.giam').on('click', function () {
+                var $input = $('#quantityInput');
+                var value = parseInt($input.val());
+                if (value > 1) {
+                    $input.val(value - 1);
+                }
+            });
+
+            $('.tang').on('click', function () {
+                var $input = $('#quantityInput');
+                var value = parseInt($input.val());
+                $input.val(value + 1);
+            });
+
+            $('#quantityInput').on('change', function () {
+                var value = parseInt($(this).val(), 10);
+
+                if (isNaN(value) || value < 1) {
+                    alert('Số lượng phải lớn hơn 1');
+                    $(this).val(1);
+                }
+
+            });
+        });
+    </script>
 @endsection
 
 

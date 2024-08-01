@@ -26,24 +26,21 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-       
-'ho_ten',
-
-'so_dien_thoai',
-'ngay_sinh'
-
+        'ho_ten',
+        'so_dien_thoai',
+        'ngay_sinh'
     ];
 
     protected static function booted()
     {
         static::creating(function ($user) {
             if (is_null($user->role)) {
-                $user->role = self::ROLE_ADMIN; 
+                $user->role = self::ROLE_ADMIN;
             }
         });
     }
 
-    
+
     public function taiKhoan()
     {
         return $this->hasOne(TaiKhoan::class);
@@ -73,7 +70,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed'
     ];
-
 
 
 }

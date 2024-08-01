@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\DanhMucController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\CheckRoleAdminMiddleware;
@@ -44,6 +45,9 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/product/detail/{id}', [ProductController::class, 'detailProduct'])->name('product.detail');
+Route::get('/list-cart', [CartController::class, 'listCart'])->name('cart.list');
+Route::post('/add-to-cart', [CartController::class, 'addCart'])->name('cart.add');
+Route::post('/update-cart', [CartController::class, 'updateCart'])->name('cart.update');
 
 Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group(function (){
 

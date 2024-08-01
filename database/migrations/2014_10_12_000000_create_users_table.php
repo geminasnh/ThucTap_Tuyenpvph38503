@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('dia_chi')->nullable();
             $table->date('ngay_sinh')->nullable();
             $table->boolean('trang_thai')->default(true);
-            $table->enum('role',[User::ROLE_ADMIN,User::ROLE_USER])->default(User::ROLE_USER)->default('Nhân viên');
+            $table->enum('role',[User::ROLE_ADMIN,User::ROLE_USER])->default(User::ROLE_USER);
             $table->rememberToken();
             $table->timestamps();
         });

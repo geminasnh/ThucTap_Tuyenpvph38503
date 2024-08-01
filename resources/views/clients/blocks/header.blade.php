@@ -67,9 +67,9 @@
                     </li>
                     <li class="nav-item ms-3">
                         <button class="btn position-relative nav-link">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <a href="{{route('cart.list')}}" class="text-decoration-none text-dark"><i class="fa-solid fa-cart-shopping "></i></a>
                             <span class="badge bg-danger rounded-pill position-absolute"
-                                  style="top: -5px; right: -14px; font-size: 13px">10</span>
+                                  style="top: -5px; right: -14px; font-size: 13px">{{ session('cart') ? count(session('cart')) : '0' }}</span>
                         </button>
                     </li>
 
