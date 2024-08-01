@@ -64,7 +64,7 @@
                         sách</a>
                 </li>
                 <li>
-                    <a href="table-data.html"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                    <a href="{{route('admins.danhmuc.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
                         Thêm</a>
                 </li>
             </ul>

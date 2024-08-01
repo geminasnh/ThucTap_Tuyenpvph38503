@@ -9,11 +9,10 @@
                     <img src="{{ asset('img/lg4.png') }}" alt="">
                 </a>
                 <h4 class="mb-12">Đăng ký</h4>
-                <p class="mb-32 text-secondary-light text-lg">Đăng ký tài khoản quản trị</p>
+                <p class="mb-32 text-secondary-light text-lg">Đăng ký tài khoản</p>
             </div>
             <form action="{{route('register')}}" method="POST">
                 @csrf
-
 
                 <div class="icon-field mb-16">
                     <span class="icon top-50 translate-middle-y">
@@ -41,7 +40,8 @@
                             <span class="icon top-50 translate-middle-y">
                                 <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
                             </span>
-                            <input type="password" name="password" class="@error('password') is-invalid @enderror form-control h-56-px bg-neutral-50 radius-12"
+                            <input type="password" name="password"
+                                   class="@error('password') is-invalid @enderror form-control h-56-px bg-neutral-50 radius-12"
                                    id="your-password" placeholder="Password">
                             @error('password') <p class="text-danger">{{$message}}</p> @enderror
                         </div>

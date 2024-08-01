@@ -27,19 +27,10 @@ class User extends Authenticatable
         'password',
         'role',
         'ho_ten',
+        'dia_chi',
         'so_dien_thoai',
         'ngay_sinh'
     ];
-
-    protected static function booted()
-    {
-        static::creating(function ($user) {
-            if (is_null($user->role)) {
-                $user->role = self::ROLE_ADMIN;
-            }
-        });
-    }
-
 
     public function taiKhoan()
     {
@@ -49,6 +40,10 @@ class User extends Authenticatable
     public function binhLuan()
     {
         return $this->hasMany(BinhLuan::class);
+    }
+    public function donHang()
+    {
+        return $this->hasMany(DonHang::class);
     }
 
     /**

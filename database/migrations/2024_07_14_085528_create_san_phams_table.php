@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('mo_ta_ngan')->nullable();
             $table->longText('noi_dung')->nullable();
             $table->unsignedInteger('so_luong');
-            $table->unsignedInteger('luot_xem');
+            $table->unsignedInteger('luot_xem')->nullable();
             $table->date('ngay_nhap');
             $table->foreignIdFor(DanhMuc::class)->constrained();
             $table->boolean('is_type')->default(true);

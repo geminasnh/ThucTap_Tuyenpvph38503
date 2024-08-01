@@ -13,6 +13,9 @@
                 <li><a href="#"><i class="fa fa-phone text-white text-decoration-none" aria-hidden="true"></i> <b
                             class="text-white text-decoration-none">0987654321 | </b></a>
                 </li>
+                <li><a href="{{route('donhangs.index')}}"> <b
+                            class="text-white text-decoration-none ms-1">My Order | </b></a>
+                </li>
                 <li class="ms-3"><a class="text-white text-decoration-none" href="#"><i class="fa-solid fa-user"></i>
                         Đăng nhập</a></li>
             </ul>

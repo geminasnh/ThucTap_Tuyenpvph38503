@@ -6,15 +6,21 @@
     <section>
         <div class="container ">
 
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
             <form action="{{route('cart.update')}}" method="POST">
                 @csrf
                 <div class="row">
                     <h2 class="text-center mb-4">Giỏ hàng</h2>
                     <div class="col-9">
-                        <table class="table table-bordered table-hover border-secondary">
+                        <table class="table table-striped table-hover">
                             <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="col">Sản phẩm</th>
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Giá</th>
@@ -25,7 +31,7 @@
                             </thead>
                             <tbody>
                             @foreach($cart as $key => $item)
-                                <tr align="center">
+                                <tr align="center" >
                                     <td>
                                         <div style="width: 100px; height: 100px"
                                              class="rounded border border-light overflow-hidden d-flex justify-content-center align-items-center">
@@ -78,7 +84,7 @@
                                 <p class="total-amount"> {{number_format($total, 0, '', '.')}} </p>
                             </h5>
 
-                            <button class="btn btn-success w-100 my-2">Mua ngay</button>
+                            <a href="{{ route('donhangs.create') }}" class="btn btn-success w-100 my-2">Mua ngay</a>
 
                         </div>
                     </div>
