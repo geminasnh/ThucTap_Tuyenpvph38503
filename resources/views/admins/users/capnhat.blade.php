@@ -48,6 +48,14 @@
                                     <input type="date" class="form-control radius-8" value="{{$user->ngay_sinh}}"name="ngay_sinh" required>
                                 </div>
                                 <div class="mb-20">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Địa chỉ <span class="text-danger-600">*</span></label>
+                                    <input type="text" class="form-control radius-8" value="{{$user->dia_chi}}"name="dia_chi" required>
+                                </div>
+                                <div class="mb-20">
+                                    <label class="form-label fw-semibold text-primary-light text-sm mb-8">Giới tính <span class="text-danger-600">*</span></label>
+                                    <input type="text" class="form-control radius-8" value="{{$user->gioi_tinh}}"name="gioi_tinh" required>
+                                </div>
+                                <div class="mb-20">
                                   <label class="form-label fw-semibold text-primary-light text-sm mb-8">Mật khẩu <span class="text-danger-600">*</span></label>
                                   <input type="text" class="form-control radius-8" value="{{$user->password}}" name="password" placeholder="Nhập mật khẩu" required>
                               </div>
@@ -56,7 +64,7 @@
                                 <div class="text-center mt-3">
                                     <a href="{{route('admins.user.index')}}" class="btn btn-light-100 text-dark "><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
                                     <button type="reset" class="btn btn-warning-600 radius-8 ">Nhập lại</button>
-                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Sửa</button>
+                                    <button class="btn btn-success-600 radius-8 "><i class="fa-solid fa-plus"></i> Cập nhật</button>
                                 </div>
                             </form>
                         </div>

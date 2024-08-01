@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('slider', function (Blueprint $table) {
+        Schema::create('thong_tin_cua_hangs', function (Blueprint $table) {
             $table->id();
-            $table->string('hinh_anh');
-            $table->string('mo_ta')->nullable();
+            $table->string('email');
+            $table->string('phone_number');
+            $table->string('logo')->nullable();
+            $table->string('address');
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('slider');
+        Schema::dropIfExists('thong_tin_cua_hangs');
     }
 };

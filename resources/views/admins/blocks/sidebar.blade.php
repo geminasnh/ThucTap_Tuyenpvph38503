@@ -80,13 +80,42 @@
                     <a href="{{route('admins.user.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
                         sách</a>
                 </li>
-                <li>
-                    <a href="{{route('admins.user.create')}}"><i class="ri-circle-fill circle-icon text-warning-main w-auto"></i> Thêm</a>
-                </li>
+           
 
             </ul>
         </li>{{--Tai khoan--}}
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                <span>Quản lý slider</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{route('admins.slider.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+                <li>
+                    <a href="{{route('admins.slider.create')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Thêm</a>
+                </li>
 
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="flowbite:users-group-outline" class="menu-icon"></iconify-icon>
+                <span>Thông tin cửa hàng</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{route('admins.thongtin.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+                <li>
+                    <a href="{{route('admins.thongtin.create')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Thêm</a>
+                </li>
+
+            </ul>
+        </li>
 
     </ul>
 </div>

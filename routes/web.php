@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admins\DanhMucController;
+use App\Http\Controllers\Admins\SliderController;
+use App\Http\Controllers\Admins\ThongTinController;
 use App\Http\Controllers\Admins\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
@@ -59,6 +61,8 @@ Route::middleware(['auth','auth.admin'])->prefix('admins')->as('admins.')->group
     Route::resource('sanpham', SanPhamController::class);
     Route::resource('donhang', DonHangController::class);
     Route::resource('user', UserController::class);
+    Route::resource('slider', SliderController::class);
+    Route::resource('thongtin', ThongTinController::class);
 
 });
 

@@ -13361,3 +13361,27 @@ td.fc-header-center {
 .user-grid-card li:last-child {
     border-bottom: none;
 }
+/* Optional: Custom styles for rounded icons */
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px; /* Adjust icon size */
+}
+
+/* Adjust icon color if needed */
+.btn-info .fa-eye {
+    color: white;
+}
+
+.btn-warning .fa-pen-to-square {
+    color: white;
+}
+
+.btn-danger .fa-trash-can {
+    color: white;
+}

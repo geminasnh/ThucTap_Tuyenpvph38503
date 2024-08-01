@@ -28,7 +28,9 @@ class User extends Authenticatable
         'role',
         'ho_ten',
         'so_dien_thoai',
-        'ngay_sinh'
+        'ngay_sinh',
+        'dia_chi',
+        'gioi_tinh'
     ];
 
     protected static function booted()

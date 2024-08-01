@@ -62,48 +62,41 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Email</th>
 
-                    <th scope="col">Tài khoản</th>
-
-                    <th scope="col" >Email</th>
                     <th scope="col">Số điện thoại</th>
-
-                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Logo</th>
                     <th scope="col">Địa chỉ</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Mật khẩu</th>
+
+                
 
                     <th scope="col">Thao tác</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($user as $index => $pt)
+                @foreach($thongtin as $index => $tt)
                     <tr>
                         <td>
                             <div class="d-flex align-items-center">
                                 <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
                                     <h6 class="text-md mb-0 fw-normal">{{++$i}}</h6>
-                                    <span class="text-sm text-secondary-light fw-normal">{{$pt->chuc_vu_id}}</span>
+                                    <span class="text-sm text-secondary-light fw-normal">{{$tt->chuc_vu_id}}</span>
                                 </div>
                             </div>
                         </td>
-                        <td>{{$pt->name}}</td>
-                        <td>{{$pt->ho_ten}}</td>
+                        <td>{{$tt->email}}</td>
+                        <td>{{$tt->phone_number}}</td>
 
-                        <td>{{$pt->email}}</td>
-                        <td>{{$pt->so_dien_thoai}}</td>
+                        <td>     <img src="{{Storage::Url($tt->logo) }}" alt=""
+                          style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">}</td>
+                        <td>{{$tt->address}}</td>
 
 
-                        <td>{{$pt->ngay_sinh}}</td>
-                        <td>{{$pt->dia_chi}}</td>
-                       <td> {{$pt->gioi_tinh}}</td>
-                        <td>{{$pt->password}}</td>
                         <td>
-                            <form action="{{route('admins.user.destroy', $pt->id)}}" method="POST">
-                                <a href="{{route('admins.user.show', $pt->id)}}" class="btn btn-info btn-icon"><i class="fa-regular fa-eye"></i></a>
-                                <a href="{{route('admins.user.edit', $pt->id)}}" class="btn btn-warning btn-icon"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <form action="{{route('admins.thongtin.destroy', $tt->id)}}" method="POST">
+                                <a href="{{route('admins.thongtin.show', $tt->id)}}" class="btn btn-info btn-icon"><i class="fa-regular fa-eye"></i></a>
+                                <a href="{{route('admins.thongtin.edit', $tt->id)}}" class="btn btn-warning btn-icon"><i class="fa-regular fa-pen-to-square"></i></a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-icon">

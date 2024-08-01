@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('thong_tin_cua_hang', function (Blueprint $table) {
+        Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->string('phone_number');
-            $table->string('logo')->nullable();
-            $table->string('address');
+            $table->string('hinh_anh');
+            $table->string('mo_ta')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('thong_tin_cua_hang');
+        Schema::dropIfExists('sliders');
     }
 };
