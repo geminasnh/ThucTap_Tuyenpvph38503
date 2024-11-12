@@ -2,8 +2,8 @@
     <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
 </button>
 <div>
-    <a href="{{route('admins.dashboard')}}" class="sidebar-logo">
-        <img src="{{ asset('img/lg4.png') }}" alt="site logo" class="light-logo">
+    <a href="{{route('home')}}" class="sidebar-logo">
+        <img src="{{ asset('img/logo-shop-giay-8.jpg') }}" alt="site logo" class="light-logo">
     </a>
 </div>
 <div class="sidebar-menu-area">
@@ -87,7 +87,54 @@
             </ul>
         </li>{{--Tai khoan--}}
 
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="fluent:slide-grid-20-filled" class="menu-icon"></iconify-icon>
+                <span>Quản lý slider</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{route('admins.slider.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+                <li>
+                   <a href="{{route('admins.slider.create')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Thêm</a>
+                </li>
 
+            </ul>
+        </li>{{--Tai khoan--}}
+
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="fluent:slide-grid-20-filled" class="menu-icon"></iconify-icon>
+                <span>Bình luận</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{route('admins.binhluan.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+
+
+            </ul>
+        </li>{{--Tai khoan--}}
+
+        <li class="dropdown">
+            <a href="javascript:void(0)">
+                <iconify-icon icon="material-symbols:data-info-alert-rounded" class="menu-icon"></iconify-icon>
+                <span>Thông tin cửa hàng</span>
+            </a>
+            <ul class="sidebar-submenu">
+                <li>
+                    <a href="{{route('admins.thongtin.index')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i> Danh
+                        sách</a>
+                </li>
+                <li>
+                    <a href="{{route('admins.thongtin.create')}}"><i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>Thêm</a>
+                </li>
+
+            </ul>
+        </li>
     </ul>
 </div>
 

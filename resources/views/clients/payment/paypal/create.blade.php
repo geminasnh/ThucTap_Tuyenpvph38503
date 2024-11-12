@@ -3,12 +3,12 @@
 @section('css')
 
 @endsection
+
 @section('content')
     <div class="container">
-        <form action="{{route('donhangs.store')}}" method="POST">
+        <form action="{{ route('donhangs.store') }}" method="POST">
             @csrf
             <div class="row">
-
                 <h2 class="text-center my-3">Đơn hàng</h2>
                 <div class="col-6">
                     <table class="table table-striped table-hover">
@@ -23,15 +23,13 @@
                             <tr align="center">
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="" alt=""
-                                             style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
+                                        <img src="" alt="" style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
                                         <div class="flex-grow-1">
                                             <h6 class="text-md mb-0 fw-normal fw-bold"> {{$item['ten_san_pham']}} </h6>
                                             <p class="text-smr">Số lượng: {{$item['so_luong']}}</p>
                                         </div>
                                     </div>
                                 </td>
-
                                 <td>{{ number_format($item['gia'] * $item['so_luong'], 0, '', '.') }} <u>vnđ</u></td>
                             </tr>
                         @endforeach
@@ -55,14 +53,14 @@
                     <div class="d-flex justify-content-center">
                         <div class="border-top shadow border-bottom w-75 border-secondary rounded-3 p-3 mt-3">
                             <h3 class="text-center fw-bolder">Thanh toán</h3>
-                            <h5 class="text-center bg-light py-2 rounded-pill">{{ number_format($total, 0, '', '.') }}
-                                vnđ</h5>
+                            <h5 class="text-center bg-light py-2 rounded-pill">{{ number_format($total, 0, '', '.') }} vnđ</h5>
                             <input type="hidden" name="tong_tien" value="{{$total}}">
                         </div>
                     </div>
-
                 </div>
+
                 <div class="col-1"></div>
+
                 <div class="col-5 shadow rounded-3">
                     <h4 class="text-center mt-3">Thông tin khách hàng</h4>
                     <input type="hidden" name="user_id" value="{{ Auth::check() ? Auth::user()->id : '' }}">
@@ -105,8 +103,6 @@
                     </div>
 
                     <form id="paymentForm" action="{{ route('payment.paypal.create') }}" method="GET">
-                        <!-- Các trường khác của form như thông tin khách hàng -->
-                        <!-- Phương thức thanh toán -->
                         <div class="mb-2">
                             <label for="payment_method" class="form-label">Phương thức thanh toán</label>
                             <div>
@@ -118,31 +114,21 @@
                                 <label for="payment_online">Thanh toán online</label>
                             </div>
                         </div>
-                    
-                        <!-- Phần hiển thị khi chọn thanh toán online -->
+
                         <div id="onlinePaymentSection" style="display:none;">
                             <h5>Thanh toán qua PayPal</h5>
                             <button type="submit" class="btn btn-primary">Thanh toán qua PayPal</button>
                         </div>
-                    
+
                         <button type="submit" class="btn btn-success w-100 my-3">Mua ngay</button>
                     </form>
-                    
-                    
-                    
-                    
-
-                    {{-- <button type="submit" class="btn btn-success w-100 my-3">Mua ngay</button> --}}
-
-                
-                    <span>Thanh toán ngay nào!</span>
-
                 </div>
 
             </div>
         </form>
     </div>
 @endsection
+
 @section('js')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -173,10 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-
 </script>
 
 @endsection
-
-

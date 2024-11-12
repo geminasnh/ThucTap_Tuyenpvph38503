@@ -53,7 +53,8 @@ class SanPhamController extends Controller
             $params['is_home'] = $request->has('is_home') ? 1 : 0;
 
             if ($request->hasFile('hinh_anh')) {
-                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanphams', 'public');
+                $params['hinh_anh'] = $request->file('hinh_anh')->store('uploads/sanpham', 'public');
+
             } else {
                 $params['hinh_anh'] = null;
             }

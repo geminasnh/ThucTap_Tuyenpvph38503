@@ -4,20 +4,18 @@
     <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center">
         <div class="max-w-464-px mx-auto w-100">
             <div>
-                <a href="#" class="mb-40 max-w-290-px">
-                    <img src="{{ asset('img/lg4.png') }}" alt="">
-                </a>
+              
                 <h4 class="mb-12">Đăng nhập</h4>
-                <p class="mb-32 text-secondary-light text-lg">Chào mừng trở lại trang quản trị</p>
+                <p class="mb-32 text-secondary-light text-lg">Chào mừng trở lại</p>
             </div>
-            <form action="{{route('login')}}" method="POST">
+            <form action="#" method="POST">
                 @csrf
 
                 <div class="icon-field mb-16">
                     <span class="icon top-50 translate-middle-y">
                         <iconify-icon icon="mage:email"></iconify-icon>
                     </span>
-                    <input type="email" name="email" value="{{old('email')}}"
+                    <input type="email" id="email" name="email" value="{{old('email')}}"
                            class="@error('email') is-invalid @enderror form-control h-56-px bg-neutral-50 radius-12"
                            placeholder="Email">
                     @error('email') <p class="text-danger">{{$message}}</p> @enderror
@@ -66,11 +64,36 @@
                         Google
                     </button>
                 </div>
-                <div class="mt-32 text-center text-sm">
-                    <p class="mb-0">Không có tài khoản? <a href="{{route('register')}}" class="text-primary-600 fw-semibold">Đăng ký</a></p>
-                </div>
-
+            </div>
+            <div class="mt-32 text-center text-sm">
+                <p class="mb-0">Không có tài khoản? <a href="{{route('register')}}" class="text-primary-600 fw-semibold">Đăng ký</a></p>
+            </div>
             </form>
         </div>
     </div>
+@endsection
+
+
+@section('js')
+<script>
+    document.getElementById("email").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const feedback = document.getElementById("feedback");
+
+      if (validateGmail(email)) {
+        feedback.textContent = "Valid Gmail address.";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Invalid Gmail address.";
+        feedback.style.color = "red";
+      }
+    });
+    function validateGmail(email) {
+      const gmailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return gmailPattern.test(email);
+    }
+
+</script>
+
 @endsection

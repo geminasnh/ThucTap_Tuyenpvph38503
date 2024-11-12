@@ -20,7 +20,9 @@ class CheckRoleAdminMiddleware
         if (Auth::check() && Auth::user()->role === User::ROLE_ADMIN) {
             return $next($request);
         }
-
-        return redirect()->route('login')->with('error', 'You do not have admin access');
+        if (Auth::user()->role === User::ROLE_USER) {
+            return redirect()->route('home');
+        }
+        return redirect()->route('login');
     }
 }

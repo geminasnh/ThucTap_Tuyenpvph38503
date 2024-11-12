@@ -2,18 +2,21 @@
 
 @section('css')
 
-
-
 @endsection
 @section('content')
     <div style="min-height: calc(100vh - 488px);">
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <!--Chi tiết sản phẩm-->
         <section>
             <!--Link-->
             <div class="container">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">/</a>
@@ -185,9 +188,6 @@
                         <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
                              aria-labelledby="panelsStayOpen-headingThree">
                             <div class="accordion-body">
-
-
-                                @if($tongBinhLuan > 0)
                                     @foreach($listBinhLuan as $index => $comment)
                                         <div class="d-flex justify-content-between w-75">
                                                             <span><strong>{{ $comment->nguoiDung->name}}</strong>:
@@ -195,24 +195,29 @@
                                             <span>Ngày bình luận: {{ $comment->thoi_gian }}</span>
                                         </div>
                                     @endforeach
-                                @else
-                                    <p>Không có bình luận nào.</p>
-                                @endif
-
-
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <h1 class="h5 text-center">Bình luận</h1>
-                    <div class="text-center">
-                        <textarea class="form-control w-50 mx-auto" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                        <button class="btn btn-secondary mt-2">Gửi bình luận</button>
-                    </div>
+                    @auth
+                        <form action="{{ route('binhluan.store') }}" method="POST" class="text-center">
+                            @csrf
+                            <input type="hidden" name="san_pham_id" value="{{ $sanPham->id }}">
+                            <textarea name="noi_dung" class="form-control w-50 mx-auto" rows="3" placeholder="Nhập bình luận của bạn"></textarea>
+                            <button type="submit" class="btn btn-secondary mt-2">Gửi bình luận</button>
+                        </form>
+                    @endauth
+                    @guest
+                        <p class="text-center">Bạn cần <a href="{{ route('login') }}">đăng nhập</a> để bình luận.</p>
+                    @endguest
                 </div>
-
+                @if(session('success'))
+                    <script>
+                        alert('{{ session('success') }}');
+                    </script>
+                @endif
             </div>
         </section>
         <!--san phẩm liên quan-->
@@ -262,6 +267,7 @@
                 <div class="d-flex justify-content-center">
                     {{ $listSanPham->links('pagination::bootstrap-5') }}
                 </div>
+
             </div>
         </section>
 
@@ -296,6 +302,7 @@
 
             });
         });
+
     </script>
 @endsection
 

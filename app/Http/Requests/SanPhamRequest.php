@@ -26,7 +26,7 @@ class SanPhamRequest extends FormRequest
             'hinh_anh' => 'image|mimes:jpg,jpeg,png',
             'so_luong' => 'integer|min:1',
             'gia' => 'required|numeric|min:0',
-            'gia_khuyen_mai' => 'numeric|min:0|lt:gia',
+            'gia_khuyen_mai' => 'required|numeric|min:0|lt:gia',
             'mo_ta_ngan' => 'string',
             'ngay_nhap' => 'required|date',
             'danh_muc_id' => 'required|exists:danh_mucs,id',

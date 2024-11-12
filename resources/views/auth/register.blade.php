@@ -28,14 +28,14 @@
                     <span class="icon top-50 translate-middle-y">
                         <iconify-icon icon="mage:email"></iconify-icon>
                     </span>
-                    <input type="email" name="email" value="{{old('email')}}"
+                    <input type="email" name="email" id="email" value="{{old('email')}}"
                            class="@error('email') is-invalid @enderror form-control h-56-px bg-neutral-50 radius-12"
                            placeholder="Email">
                     @error('email') <p class="text-danger">{{$message}}</p> @enderror
                 </div>
 
                 <div class="mb-20">
-                    <div class="position-relative ">
+                    <div class="position-relative">
                         <div class="icon-field">
                             <span class="icon top-50 translate-middle-y">
                                 <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
@@ -50,12 +50,27 @@
                             data-toggle="#your-password"></span>
                     </div>
                 </div>
-
+                
+                <!-- Add this field for password confirmation -->
+                <div class="mb-20">
+                    <div class="position-relative">
+                        <div class="icon-field">
+                            <span class="icon top-50 translate-middle-y">
+                                <iconify-icon icon="solar:lock-password-outline"></iconify-icon>
+                            </span>
+                            <input type="password" name="password_confirmation"
+                                   class="@error('password_confirmation') is-invalid @enderror form-control h-56-px bg-neutral-50 radius-12"
+                                   placeholder="Confirm Password">
+                            @error('password_confirmation') <p class="text-danger">{{$message}}</p> @enderror
+                        </div>
+                    </div>
+                </div>
+      
                 <div class="">
                     <div class="d-flex justify-content-between gap-2">
                         <div class="form-check style-check d-flex align-items-start">
                             <input class="form-check-input border border-neutral-300 mt-4" type="checkbox" value=""
-                                   id="condition">
+                                   id="condition" required>
                             <label class="form-check-label text-sm" for="condition">
                                 Đồng ý với điều khoản của chúng tôi
                                 <a href="javascript:void(0)" class="text-primary-600 fw-semibold">Điều khoản</a> và
@@ -95,5 +110,30 @@
             </form>
         </div>
     </div>
+
+@endsection
+
+
+@section('js')
+<script>
+    document.getElementById("email").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const feedback = document.getElementById("feedback");
+
+      if (validateGmail(email)) {
+        feedback.textContent = "Valid Gmail address.";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Invalid Gmail address.";
+        feedback.style.color = "red";
+      }
+    });
+    function validateGmail(email) {
+      const gmailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return gmailPattern.test(email);
+    }
+
+</script>
 
 @endsection

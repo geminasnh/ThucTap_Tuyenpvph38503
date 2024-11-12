@@ -14,6 +14,848 @@ body{
     color: #7faf51;
 }
 
+
+.bg-success-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays above other content */
+}
+/* Add padding to the next section to prevent content from being hidden */
+.content-section {
+    padding-top: 70px; /* Adjust based on header height */
+}
 /*.carousel-control-prev .carousel-control-prev-icon .carousel-control-next .carousel-control-next-icon {*/
 /*    color: #7faf51;*/
 /*}*/
+.navbar-nav.ms-auto {
+    margin-left: auto; /* Align items to the right */
+}
+
+.dropdown-menu {
+    left: auto;
+    right: 0; /* Align the dropdown to the right */
+}
+
+/* Optional: Add some margin to ensure there’s space between the cart and profile dropdown */
+.navbar-nav .dropdown {
+    margin-left: 10px; /* Adjust this if necessary */
+}
+
+
+
+
+
+
+
+    /* Profile image styling */
+    .profile-img {
+        width: 35px;  /* Adjust width */
+        height: 35px; /* Adjust height */
+        border-radius: 50%; /* Ensure it's a circle */
+        object-fit: cover; /* Ensures the image fits well */
+    }
+
+    /* Adjusting the dropdown menu to avoid misalignment */
+    .dropdown-menu {
+        min-width: 230px; /* Minimum width for better appearance */
+        right: 0 !important; /* Align to the right */
+        top: 100% !important; /* Position dropdown correctly */
+    }
+
+    .dropdown-item {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    .dropdown-menu .text-white {
+        color: white !important;
+    }
+    /* Styling for the dropdown toggle button */
+    .dropdown button {
+        border: none;
+        background: transparent;
+    }
+
+    /* Hover effects for dropdown items */
+    .dropdown-item:hover {
+        background-color: #f1f1f1; /* Light background on hover */
+        color: #007bff; /* Text color change on hover */
+    }
+
+    .dropdown-menu-end {
+        right: 0 !important; /* Ensure the dropdown aligns to the right */
+    }
+
+    /* Profile section inside the dropdown */
+    .dropdown-menu .py-2 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .to-top-list {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Optional: Button inside dropdown */
+    .hover-text-danger:hover {
+        color: #dc3545; /* Red color for the close button */
+    }
+
+
+
+
+
+
+
+
+/* Ensure the navbar content is not hidden when scrolling */
+
+
+header {
+    background-color: #343a40; /* Dark background for contrast */
+    color: #f8f9fa; /* Light text color */
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensures the header is above other elements */
+    
+}
+
+/* Navbar styling */
+.navbar {
+    font-size: 1rem;
+}
+
+.navbar .nav-link {
+    color: #f8f9fa; /* Light text for links */
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover, .navbar .nav-link:focus {
+    color: #ffc107; /* Bright hover color */
+}
+
+/* Dropdown menu styling */
+.navbar .dropdown-menu {
+    background-color: #495057; /* Slightly lighter background for dropdown */
+    border: none;
+    padding: 10px;
+}
+
+.navbar .dropdown-item {
+    color: #f8f9fa;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #343a40;
+    color: #ffc107;
+}
+
+/* Search box styling */
+.input-group .form-control {
+    border-radius: 20px 0 0 20px;
+    border: none;
+    padding: 8px 15px;
+    background-color: #495057;
+    color: #f8f9fa;
+}
+
+.input-group .form-control::placeholder {
+    color: #ced4da;
+}
+
+.input-group .btn {
+    border-radius: 0 20px 20px 0;
+    background-color: #ffc107;
+    color: #343a40;
+    border: none;
+}
+
+.input-group .btn:hover {
+    background-color: #e0a800;
+}
+
+
+
+
+
+
+
+
+
+
+/* Cart icon styling */
+.navbar .fa-cart-shopping {
+    font-size: 1.2rem;
+}
+
+.navbar .badge {
+    font-size: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .navbar .dropdown-toggle {
+        font-size: 1rem;
+    }
+
+    .input-group .form-control {
+        font-size: 0.9rem;
+    }
+}
+/* Overall Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Carousel */
+#slideshow {
+    margin-top: 20px;
+}
+#slideshow-cus{
+    margin-top: 0px;
+}
+.carousel-inner img {
+    object-fit: cover;
+    max-height: 400px;
+    width: 100%;
+}
+
+.carousel-caption {
+    bottom: 20px;
+    left: 20px;
+}
+
+.carousel-indicators button {
+    background-color: #7faf51;
+}
+
+/* Section Styling for Product Layout */
+section {
+    padding: 50px 0;
+}
+
+section-customize {
+    padding: 0px 0;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+/* Product Grid Layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-3 {
+    width: 23%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Product Card Styling */
+.border {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.border:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.text-center {
+    text-align: center;
+}
+
+h1, h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Product Price and Discount */
+.card-footer {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
+
+.card-footer .btn {
+    background-color: #7faf51;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.card-footer .btn:hover {
+    background-color: #6a9e46;
+}
+
+/* Product Details */
+.card-footer .text-decoration-line-through {
+    color: #ff4d4d;
+}
+
+/* Stars Rating */
+p i {
+    color: #f1c40f;
+}
+
+/* Sale Section Styling */
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Banner Section */
+#banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Info Box Styling */
+.container-fluid.bg-light {
+    background-color: #f9f9f9;
+    padding: 30px 0;
+}
+
+.d-flex.justify-content-around {
+    border-top: 2px solid #ddd;
+}
+
+.d-flex.justify-content-around li {
+    list-style: none;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 10px;
+    width: 33%;
+}
+
+.d-flex.justify-content-around li span {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.d-flex.justify-content-around li i {
+    font-size: 2rem;
+    color: #7faf51;
+}
+
+/* Pagination Styling */
+.d-flex.justify-content-end {
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #7faf51;
+    border-color: #7faf51;
+}
+
+.pagination .page-link {
+    color: #343a40;
+}
+
+.pagination .page-item:not(.active) .page-link:hover {
+    background-color: #7faf51;
+    color: #fff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .col-3 {
+        width: 48%;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .carousel-caption {
+        font-size: 1rem;
+    }
+
+    .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+    }
+}
+.table {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #7faf51;
+    color: white;
+    font-weight: bold;
+}
+
+.table td {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Hover Effect */
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Action Buttons Styling */
+.table .btn {
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.table .btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+.table .btn-success:hover {
+    background-color: #218838;
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+.table .btn-danger:hover {
+    background-color: #c82333;
+}
+
+.table .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.table .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Add space between action buttons */
+.table form {
+    display: inline-block;
+}
+
+/* Header Text Styling */
+h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-top: 30px;
+}
+
+/* Pagination Styling (if needed) */
+.d-flex.justify-content-end {
+    margin-top: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #7faf51;
+    border-color: #7faf51;
+}
+
+.pagination .page-link {
+    color: #343a40;
+}
+
+.pagination .page-item:not(.active) .page-link:hover {
+    background-color: #7faf51;
+    color: #fff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .table .btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+/* Cart Section - New Styles */
+section {
+    background-color: #f8f9fa;
+    padding: 30px 0;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 1.25rem;
+    color: #343a40;
+}
+
+/* Coupon Section */
+.row span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #343a40;
+}
+
+.row input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    background-color: #7faf51;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #5a8e3a;
+}
+
+/* Total Summary Box */
+.border {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h5.mt-2 {
+    font-size: 1.25rem;
+    color: #343a40;
+}
+
+h5 .sub-total, .shipping {
+    color: #7faf51;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+h5.bg-light.text-center {
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 5px;
+    color: #dc3545;
+    font-size: 1.5rem;
+}
+
+.total-amount {
+    font-size: 1.8rem;
+    color: #dc3545;
+}
+
+/* Success Button */
+.btn-success {
+    background-color: #7faf51;
+    color: white;
+    padding: 12px 15px;
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #5a8e3a;
+}
+
+/* Add Padding and Margin for Coupon */
+.row .col-7 {
+    padding-right: 10px;
+}
+
+.row .col-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.row .col-3 {
+    padding-left: 10px;
+}
+
+/* Remove Button (Trash Icon) */
+.pro-remove a {
+    font-size: 1.5rem;
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.pro-remove a:hover {
+    color: #c82333;
+}
+
+/* Input fields (for quantity updates) */
+input[type="text"] {
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Responsive Design Tweaks */
+@media (max-width: 768px) {
+    .row .col-9 {
+        width: 100%;
+    }
+
+    .row .col-3 {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .table th, .table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn-success {
+        padding: 10px 12px;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+}
+/* General Styling for Success Banner */
+
+
+
+
+
+
+
+
+.bg-gray {
+    --bs-bg-opacity: 1;
+    background-color: rgba(224, 234, 243) !important
+  }
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+footer .col-4 {
+    flex: 1 1 30%; /* Flexbox for responsiveness, ensuring 3 columns */
+    margin-bottom: 2rem;
+}
+
+footer .col-4 a img {
+    width: 135px;
+    height: 40px;
+}
+
+footer .text-muted {
+    color: #999999; /* Muted text color for descriptions */
+}
+
+footer .social-icons a {
+    font-size: 1.25rem;
+    color: #999999;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #ffffff; /* White color on hover for icons */
+}
+
+footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+footer ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+footer ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: blue; /* White color on hover for links */
+}
+
+footer .info-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+footer .info-item i {
+    margin-right: 0.5rem;
+    color: #28a745; /* Green color for icons */
+}
+
+footer .info-item span {
+    color: #000000;
+}
+
+footer .text-center {
+    text-align: center;
+    margin-top: 2rem;
+    color: #020202;
+    font-size: 1rem;
+}
+
+footer .text-center a {
+    color: #28a745;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .text-center a:hover {
+    color: #ffffff; /* Hover effect for links in footer */
+}
+
+@media (max-width: 767px) {
+    footer .col-4 {
+        flex: 1 1 100%; /* Stacks columns on small screens */
+    }
+}
+
+
+
+
+
+
+
+/* Ensure the table cells don't wrap and the buttons stay in one row */
+.table td {
+    white-space: nowrap; /* Prevent text from wrapping */
+    vertical-align: middle; /* Center content vertically */
+}
+
+/* Adjust table layout to prevent overflow */
+.table {
+    table-layout: fixed; /* Fix column widths to prevent overflow */
+    width: 100%;
+}
+
+/* Style for action buttons */
+.table .btn {
+    padding: 0.25rem 0.5rem; /* Reduce button padding to make them smaller */
+    font-size: 0.875rem; /* Smaller font size for the buttons */
+    margin: 0 5px; /* Space between buttons */
+    white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+/* Optional: Customize the "Hủy" and "Đã nhận hàng" buttons */
+.table .btn-danger,
+.table .btn-primary {
+    font-size: 0.875rem; /* Ensure the buttons are small */
+    padding: 0.2rem 0.5rem; /* Even smaller padding for better fit */
+}
+
+/* Center buttons in the last column */
+.table td.text-center {
+    text-align: center;
+}
+
+/* Make sure buttons stay within the table cell without overflow */
+.table td {
+    overflow: hidden; /* Hide overflow if buttons are too large */
+    text-overflow: ellipsis; /* Add ellipsis if text is too long */
+}
+
+/* Optional: Styling for the text-muted "N/A" */
+.table td .text-muted {
+    font-style: italic;
+    color: #888;
+}
+
+/* Optional: Style for the "Xem" button */
+.table .btn-success {
+    padding: 0.2rem 0.5rem;  /* Adjust padding */
+    font-size: 0.75rem;       /* Smaller font size */
+    width: auto;              /* Ensures button width adjusts to text size */
+    min-width: 60px;          /* Set a minimum width for consistency */
+}
+
+
+/* Prevent the table from becoming too narrow */
+.table th,
+.table td {
+    text-overflow: ellipsis;
+    max-width: 200px; /* Allow cells to expand but not overflow */
+}
+
+ 
+
+
+

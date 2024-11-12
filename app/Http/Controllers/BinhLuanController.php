@@ -1,23 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admins;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\BinhLuan;
 use Illuminate\Http\Request;
 
 class BinhLuanController extends Controller
 {
-    public $binh_luan;
-    public function __construct()
-    {
-        $this->binh_luan = new BinhLuan();
-    }
+
     public function index()
     {
-        $title = "Danh sách bình luận";
-        $dsBinhLuan = $this->binh_luan->getListBinhLuan();
-        return view('admins.binhluans.index', compact('title','dsBinhLuan'));
+
     }
 
     /**
@@ -33,7 +26,14 @@ class BinhLuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        BinhLuan::create([
+            'san_pham_id' => $request->san_pham_id,
+            'user_id' => auth()->id(),
+            'noi_dung' => $request->noi_dung,
+            'thoi_gian' => now()
+        ]);
+
+        return redirect()->back()->with('success', 'Bình luận thành công!');
     }
 
     /**
@@ -65,8 +65,6 @@ class BinhLuanController extends Controller
      */
     public function destroy(string $id)
     {
-        $binhLuan = BinhLuan::query()->findOrFail($id);
-        $binhLuan->delete();
-        return redirect()->route('admins.sanpham.index')->with('thongBao', "Xóa thành công");
+
     }
 }

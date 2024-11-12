@@ -61,10 +61,9 @@
             <table class="table bordered-table mb-0" >
                 <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Họ Tên</th>
-
                     <th scope="col">Tài khoản</th>
+
+                    <th scope="col">Họ Tên </th>
 
                     <th scope="col" >Email</th>
                     <th scope="col">Số điện thoại</th>
@@ -78,15 +77,6 @@
                 <tbody>
                 @foreach($user as $index => $pt)
                     <tr>
-                        <td>
-                            <div class="d-flex align-items-center">
-                                <img src="#" alt="" class="flex-shrink-0 me-12 radius-8 me-12">
-                                <div class="flex-grow-1">
-                                    <h6 class="text-md mb-0 fw-normal">{{++$i}}</h6>
-                                    <span class="text-sm text-secondary-light fw-normal">{{$pt->chuc_vu_id}}</span>
-                                </div>
-                            </div>
-                        </td>
                         <td>{{$pt->name}}</td>
                         <td>{{$pt->ho_ten}}</td>
 
@@ -96,14 +86,26 @@
 
                         <td>{{$pt->ngay_sinh}}</td>
                         <td>{{$pt->password}}</td>
-                        <td>
-                            <form action="{{route('admins.user.destroy',$pt->id)}}" method="POST">
-                               <a href="{{route('admins.user.show',$pt->id)}}">view</a>
-                                <a href="{{route('admins.user.edit',$pt->id)}}">Sửa</a>
+
+                        <td class="text-nowrap">
+                            <a href="{{route('admins.user.show',$pt->id)}}" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
+                            </a>
+                            <a href="{{route('admins.user.edit',$pt->id)}}"
+                               class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <iconify-icon icon="lucide:edit"></iconify-icon>
+                            </a>
+                            <form method="POST" action="{{route('admins.user.destroy',$pt->id)}}"
+                                  onsubmit="return confirm('Xác nhận xoá?')" class="d-inline-flex">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Xóa</button>
-                              </form>
+                                <button
+                                    class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                </button>
+                            </form>
+
+
                         </td>
                     </tr>
                 @endforeach

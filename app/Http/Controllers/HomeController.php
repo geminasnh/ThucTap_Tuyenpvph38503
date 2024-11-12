@@ -2,20 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DanhMuc;
+use App\Models\SanPham;
+use App\Models\Slider;
+use App\Models\ThongTinCuaHang;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +17,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $listSanPham = SanPham::with('danhMuc')->take(8)->get();
+        $listSlider = Slider::all();
+        $sanPhamYeuThich = SanPham::orderBy('luot_xem', 'desc')->paginate(4);
+        return view('clients.home',compact('listSlider','listSanPham','sanPhamYeuThich'));
+    }
+    public function thongTin()
+    {
+        // Lấy thông tin cửa hàng (chỉ lấy bản ghi đầu tiên)
+        $thongTin = ThongTinCuaHang::first();  
+    
+        // Lấy tất cả danh mục
+        $danhMucs = DanhMuc::all();  
+    
+        // Trả về view và truyền dữ liệu
+        return view('admins.thongtins.index', compact('thongTin', 'danhMucs'));
     }
 }

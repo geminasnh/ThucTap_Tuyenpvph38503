@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DanhMuc;
 use App\Models\SanPham;
+use App\Models\ThongTinCuaHang;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -21,18 +23,24 @@ class CartController extends Controller
 
         $total = $subTotal + $shipping;
 
-        return view('clients.cart', compact('cart','subTotal','shipping','total' ));
+        return view('clients.cart', compact('cart','subTotal','shipping','total'));
     }
     public function addCart(Request $request)
     {
         $proId = $request->input('product_id');
         $qty = $request->input('quantity');
-
         $sanPham = SanPham::query()->findOrFail($proId);
+
+        if ($qty > $sanPham->so_luong) {
+            return redirect()->back()->with('error', 'Số lượng chỉ còn' . $sanPham->so_luong . 'sản phẩm.');
+        }
 
         $cart = session()->get('cart', []);
 
         if (isset($cart[$proId])){
+            if ($cart[$proId]['so_luong'] + $qty > $sanPham->so_luong) {
+                return redirect()->back()->with('error', 'Số lượng chỉ còn' . $sanPham->so_luong . 'sản phẩm.');
+            }
             $cart[$proId]['so_luong'] += $qty;
         }else{
             $cart[$proId] = [

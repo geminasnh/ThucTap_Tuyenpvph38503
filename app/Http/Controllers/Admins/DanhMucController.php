@@ -50,10 +50,20 @@ class DanhMucController extends Controller
     public function destroy($id)
     {
         $danhMuc = DanhMuc::findOrFail($id);
-        $danhMuc->delete();
+
+        // Delete all related chi_tiet_don_hangs records first
+        foreach ($danhMuc->sanPhams as $sanPham) {
+            $sanPham->chiTietDonHang()->delete(); // Assuming chiTietDonHang is the relation on the product model
+        }
+    
+        // Now you can safely delete the sanPhams and the category
+        $danhMuc->sanPhams()->delete();
+    
         if ($danhMuc->hinh_anh && Storage::disk('public')->exists($danhMuc->hinh_anh)){
             Storage::disk('public')->delete($danhMuc->hinh_anh);
         }
+    
+        $danhMuc->delete();
         return redirect()->route('admins.danhmuc.index');
     }
 

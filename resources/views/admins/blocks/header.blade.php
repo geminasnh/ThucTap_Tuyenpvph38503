@@ -45,7 +45,7 @@
                                       class="w-8-px h-8-px bg-success-main rounded-circle position-absolute end-0 bottom-0"></span>
                             </span>
                                 <div>
-                                    <h6 class="text-md fw-semibold mb-4">An</h6>
+                                    <h6 class="text-md fw-semibold mb-4">Tuyển</h6>
                                     <p class="mb-0 text-sm text-secondary-light text-w-100-px">Xin chao!</p>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                     <ul class="to-top-list">
                         <li>
                             <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-primary d-flex align-items-center gap-3"
-                               href="#">
+                               href="{{route('profile.show')}}">
                                 <iconify-icon icon="solar:user-linear" class="icon text-xl"></iconify-icon>
                                 My Profile</a>
                         </li>

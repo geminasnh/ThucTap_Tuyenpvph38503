@@ -35,12 +35,7 @@
                         <option>20</option>
                     </select>
                 </div>
-                <div class="icon-field">
-                    <input type="text" name="#0" class="form-control form-control-sm w-auto" placeholder="Tìm kiếm">
-                    <span class="icon">
-              <iconify-icon icon="ion:search-outline"></iconify-icon>
-            </span>
-                </div>
+             
             </div>
             <div class="d-flex flex-wrap align-items-center gap-3">
                 <select class="form-select form-select-sm w-auto">
@@ -75,7 +70,7 @@
                         <td>{{$item->ma_sp}}</td>
                         <td >
                             <div class="d-flex align-items-center">
-                                <img src="{{Storage::Url($item->hinh_anh) }}" alt=""
+                                <img src="{{ asset('storage/' . $item->hinh_anh) }}" alt=""
                                      style="width: 50px" class="flex-shrink-0 me-12 radius-8 me-12">
                                 <div class="flex-grow-1">
                                     <h6 class="text-md mb-0 fw-normal fw-bold">{{$item->ten_san_pham}}</h6>
@@ -121,7 +116,7 @@
                 </tbody>
             </table>
             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-24">
-                <span>Hiển thị 1 tới 10 trên 12 trang</span>
+            
                 <ul class="pagination d-flex flex-wrap align-items-center gap-2 justify-content-center">
                     <li class="page-item">
                         <a class="page-link text-secondary-light fw-medium radius-4 border-0 px-10 py-10 d-flex align-items-center justify-content-center h-32-px w-32-px bg-base"
